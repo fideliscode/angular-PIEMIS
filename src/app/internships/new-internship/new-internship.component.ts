@@ -12,15 +12,16 @@ internshipForm: FormGroup;
 
   ngOnInit() {
     this.internshipForm = new FormGroup({
-          internshipPosition: new FormControl(),
-          internshipfunction: new FormControl(),
-          internshipfile: new FormControl(),
-          description: new FormControl(),
-          category: new FormControl(),
-          subcategory: new FormControl(),
-          tags: new FormControl(),
-          isPublished: new FormControl(),
+          firstName: new FormControl(),
+          lastName: new FormControl(),
+          email: new FormControl(),
+          password: new FormControl(),
+          phone: new FormControl()
 });
+  }
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.internshipForm.value);
   }
 
 }
