@@ -27,52 +27,51 @@
     </div>
   </nav>
 
-
-<nav class="ml-2">Registration/Personal info</nav>
+<!-- navigation path goes here -->
+<nav class="ml-2">internship/personal info</nav>
 <br>
 <div class="container-fluid " >
-  <div class="row">
-    <div class="col-lg-3">
-    
-    </div>
-    <div class="col-lg-6">
-      <div class="card shadow">
-          <div class="card-header text-center" 
-          style="background-color: #008d0d; color: #fff;">
-             PERSONAL INFORMATION
-            </div>
-      <form class="text-center border border-light p-5" [formGroup]="internshipForm" (ngSubmit)="onSubmit()" >      
-        <div class="form-group">
-            <input type="text" formControlName="firstName"
-              class="form-control mb-4" placeholder="First Name">
-            
-            
-                <input type="text"  formControlName="lastName"
-                class="form-control mb-4" placeholder="Last Name">
+<div class="row">
+  <!-- left section -->
+<div class="col-lg-3">
+</div>
+ <!-- middle section   -->
+<div class="col-lg-6">
+<div class="card shadow">
+<div class="card-header text-center" 
+style="background-color: #008d0d; color: #fff;">
+PERSONAL INFORMATION
+</div>
+<form class="text-center border border-light p-5" [formGroup]="internshipForm" (ngSubmit)="onSubmit()" >      
+  <div class="form-group">
+    <input type="text" formControlName="fname"
+    class="form-control mb-4" placeholder="First Name">
+                            
+    <input type="text"  formControlName="lname"
+    class="form-control mb-4" placeholder="Last Name">
 
-            <input type="email"  formControlName="email"
-            class="form-control mb-4" placeholder="email">
-            <input type="integer"  formControlName="phone"
-                  class="form-control mb-4" placeholder="Phone Number">
-            <div class="form-group form-inline">
+    <input type="email"  formControlName="email"
+    class="form-control mb-4" placeholder="email">
 
-              <div class="form-row">
-                  <div class="col-lg-12">
-              <input type="password" appPassword  placeholder="password" class="form-control" >
-              </div>
-            </div>
-            </div>
-        
-        </div>
-        <button class="btn btn-success btn-outline btn-block btn-sm " 
-        style="background-color: #008d0d;" type="submit" [disabled]="!internshipForm.valid">Send</button>
-      </form>
-      
-      </div>
-    </div>
-    <div class="col-lg-3">
-        <button class="btn btn-success btn-outline btn-sm shadow ml-4">+ ADD INTERNSHIP</button>
-    </div>
-   
+    <input type="tel"  formControlName="phone"
+    class="form-control mb-4" placeholder="Phone Number">
   </div>
+  <div class="form-group form-inline">
+    <input type="password" formControlName="password" 
+    class="form-control" appPassword placeholder="password"  > 
+    <!-- password hide/show directive is inserted here -->  
+  </div>
+  <button class="btn btn-success btn-block btn-sm " 
+  style="background-color: #008d0d;" type="submit" 
+  [disabled]="!internshipForm.valid">Sign up for free
+  </button>
+
+</form>
+</div>
+</div>
+<!-- right section -->
+<div class="col-lg-3">
+    <button class="btn btn-success  btn-sm shadow ml-4">+ ADD INTERNSHIP</button>
+</div>
+</div>
 </div>
