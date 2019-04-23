@@ -12,14 +12,21 @@
       <div class="card shadow">
           <div class="card-header text-center"
           style="background-color: #008d0d; color: #fff;">
-             SIGN-IN INFORMATION
+             JOIN UniIntern
             </div>
-      <form class="text-center border border-light p-5" [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+      <form class="text-center border border-light p-5" [formGroup]="newuserForm" (ngSubmit)="onSubmit()" >
         <div class="form-group">
+            <input type="text" formControlName="firstName"
+              class="form-control mb-4" placeholder="First Name">
+
+
+                <input type="text"  formControlName="lastName"
+                class="form-control mb-4" placeholder="Last Name">
 
             <input type="email"  formControlName="email"
             class="form-control mb-4" placeholder="email">
-
+            <input type="integer"  formControlName="phone"
+                  class="form-control mb-4" placeholder="Phone Number">
             <div class="form-group form-inline">
 
               <div class="form-row">
@@ -31,9 +38,7 @@
 
         </div>
         <button class="btn btn-success btn-outline btn-block btn-sm "
-        style="background-color: #008d0d;"  [routerLink]= "['/users/intern']"  >SIGN IN </button>
-        <span> <a href="#"> Forgot password?</a></span>
-
+        style="background-color: #008d0d;" type="submit" [disabled]="!newuserForm.valid">Send</button>
       </form>
 
       </div>

@@ -1,3 +1,78 @@
-<p>
-  users works!
-</p>
+<nav class="navbar navbar-expand-lg navbar-dark  " style="background-color:#4e5559; ">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+
+          <ul class="navbar-nav mx-5 " style="padding-left:50px;" >
+              <li class="nav-item px-5" >
+                <a class="nav-link" href="#"><strong>INTERNSHIPS</strong></a>
+              </li>
+              <li class="nav-item px-5">
+                <a class="nav-link" href="#"><strong>INTERN POOLS</strong></a>
+              </li>
+              <li class="nav-item px-5">
+                  <a class="nav-link" href="#"> <strong>ACCOUNT SETTING</strong> </a>
+              </li>
+              <li class="nav-item px-5">
+                  <a class="nav-link" href="#"> <strong>PRODUCTS</strong> </a>
+              </li>
+
+
+            </ul>
+    </div>
+  </nav>
+
+
+<nav class="ml-2">Registration/Personal info</nav>
+<br>
+<div class="container-fluid " >
+  <div class="row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow">
+          <div class="card-header text-center"
+          style="background-color: #008d0d; color: #fff;">
+             PERSONAL INFORMATION
+            </div>
+      <form class="text-center border border-light p-5" [formGroup]="usersForm" (ngSubmit)="onSubmit()" >
+        <div class="form-group">
+            <input type="text" formControlName="firstName"
+              class="form-control mb-4" placeholder="First Name">
+
+
+                <input type="text"  formControlName="lastName"
+                class="form-control mb-4" placeholder="Last Name">
+
+            <input type="email"  formControlName="email"
+            class="form-control mb-4" placeholder="email">
+            <input type="integer"  formControlName="phone"
+                  class="form-control mb-4" placeholder="Phone Number">
+            <div class="form-group form-inline">
+
+              <div class="form-row">
+                  <div class="col-lg-12">
+              <input type="password" appPassword  placeholder="password" class="form-control" >
+              </div>
+            </div>
+            </div>
+
+        </div>
+        <button class="btn btn-success btn-outline btn-block btn-sm "
+        style="background-color: #008d0d;" type="submit" [disabled]="!usersForm.valid">Send</button>
+      </form>
+
+      </div>
+    </div>
+    <div class="col-lg-3">
+        <button class="btn btn-success btn-outline btn-sm shadow ml-4">+ ADD INTERNSHIP</button>
+    </div>
+
+  </div>
+</div>
