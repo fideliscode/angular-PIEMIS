@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/user.service';
+import { HttpResponse }  from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-new-internship',
@@ -9,30 +12,48 @@ import { UserService } from 'src/app/user.service';
 })
 export class NewInternshipComponent implements OnInit {
 internshipForm: FormGroup;
-
-  constructor(private userService: UserService) { }
+companyForm: FormGroup;
+Alertsms: boolean;
+  
+  constructor(private userService: UserService) { 
+    this.Alertsms=false;}
 
   ngOnInit() {
     this.internshipForm = new FormGroup({
-          fname: new FormControl(),
-          lname: new FormControl(),
-          email: new FormControl(),
-          password: new FormControl(),
-          phone: new FormControl()
+         fname: new FormControl(),
+         lname: new FormControl(),
+         email: new FormControl(),
+         password: new FormControl(),
+         phone: new FormControl()
+});
+        this.companyForm = new FormGroup({
+         companyName: new FormControl(),
+         industryType: new FormControl(),
+         website: new FormControl(),
+         address: new FormControl(),
+         country: new FormControl()
 });
   }
+  
   onSubmit() {
-    console.log(this.internshipForm.value.password);
-    this.userService.regProfessional(
+     this.userService.regProfessional(
       this.internshipForm.value.fname,
       this.internshipForm.value.lname,
       this.internshipForm.value.email,
       this.internshipForm.value.password,
       this.internshipForm.value.phone,
-      'professional').subscribe(response => {
-      alert('account created');
-      this.internshipForm.reset();
-      console.log(response)},
-      err => {console.error(err);})
+      'professional')
+     .subscribe(
+       ()=>{
+         this.Alertsms=true;
+         this.internshipForm.reset();
+         
+       }
+       );
+
+  
      
-}}
+}
+
+
+}

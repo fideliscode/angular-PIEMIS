@@ -37,12 +37,23 @@
 </div>
  <!-- middle section   -->
 <div class="col-lg-6">
+  <div class = "alert alert-success alert-dismissable" *ngIf = "Alertsms"  >
+   <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+      &times;
+   </button>
+  
+   Success! Well done its submitted.
+</div>
 <div class="card shadow">
 <div class="card-header text-center" 
-style="background-color: #008d0d; color: #fff;">
-PERSONAL INFORMATION
+style="background-color: #008d0d; color: #fff;" *ngIf = "!Alertsms">
+Personal information
 </div>
-<form class="text-center border border-light p-5" [formGroup]="internshipForm" (ngSubmit)="onSubmit()" >      
+<div class="card-header text-center" 
+style="background-color: #008d0d; color: #fff;" *ngIf = "Alertsms">
+Company information
+</div>
+<form class="text-center border border-light p-5" [formGroup]="internshipForm" (ngSubmit)="onSubmit()"   *ngIf = "!Alertsms">      
   <div class="form-group">
     <input type="text" formControlName="fname"
     class="form-control mb-4" placeholder="First Name">
@@ -64,6 +75,33 @@ PERSONAL INFORMATION
   <button class="btn btn-success btn-block btn-sm " 
   style="background-color: #008d0d;" type="submit" 
   [disabled]="!internshipForm.valid">Sign up for free
+  </button>
+
+</form>
+
+
+<form class="text-center border border-light p-5" [formGroup]="companyForm" (ngSubmit)="onSubmit()" *ngIf = "Alertsms" >      
+  <div class="form-group">
+    <input type="text" formControlName="companyName"
+    class="form-control mb-4" placeholder="companyName">
+                            
+    <input type="text"  formControlName="industryType"
+    class="form-control mb-4" placeholder="industryType">
+
+    <input type="email"  formControlName="website"
+    class="form-control mb-4" placeholder="website">
+
+    <input type="tel"  formControlName="address"
+    class="form-control mb-4" placeholder="address">
+  </div>
+  <div class="form-group form-inline">
+    <input type="password" formControlName="country" 
+    class="form-control" appPassword placeholder="country"  > 
+    <!-- password hide/show directive is inserted here -->  
+  </div>
+  <button class="btn btn-success btn-block btn-sm " 
+  style="background-color: #008d0d;" type="submit" 
+  [disabled]="!internshipForm.valid">Next
   </button>
 
 </form>
