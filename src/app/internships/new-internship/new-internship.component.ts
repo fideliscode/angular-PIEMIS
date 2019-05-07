@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/user.service';
 import { HttpResponse }  from '@angular/common/http';
-
+import {InternshipService} from 'src/app/internship.service';
+import {User} from 'src/app/user.interface';
 
 
 @Component({
@@ -11,49 +12,42 @@ import { HttpResponse }  from '@angular/common/http';
   styleUrls: ['./new-internship.component.scss']
 })
 export class NewInternshipComponent implements OnInit {
-internshipForm: FormGroup;
-companyForm: FormGroup;
-Alertsms: boolean;
-  
-  constructor(private userService: UserService) { 
-    this.Alertsms=false;}
+  internshipForm:FormGroup;
+  internshipfile:FormGroup;
+  uploadedFile: File = null;
+  attachfile: boolean;
+
+
+  constructor(private userService: UserService, private internshipService: InternshipService) { 
+    this.attachfile = false;
+    }
 
   ngOnInit() {
     this.internshipForm = new FormGroup({
-         fname: new FormControl(),
-         lname: new FormControl(),
-         email: new FormControl(),
-         password: new FormControl(),
-         phone: new FormControl()
-});
-        this.companyForm = new FormGroup({
-         companyName: new FormControl(),
-         industryType: new FormControl(),
-         website: new FormControl(),
-         address: new FormControl(),
-         country: new FormControl()
-});
+      internshipPositon: new FormControl(), // required
+      internshipfunction: new FormControl(), // required
+      path: new FormControl(),
+      filetype: new FormControl(),
+      description: new FormControl(), // required
+      name: new FormControl(),
+      subcategory: new FormControl(),
+      tag1: new FormControl(),
+      tag2: new FormControl(),
+      tag3: new FormControl(),
+      isPublished: new FormControl(),
+    });
   }
-  
-  onSubmit() {
-     this.userService.regProfessional(
-      this.internshipForm.value.fname,
-      this.internshipForm.value.lname,
-      this.internshipForm.value.email,
-      this.internshipForm.value.password,
-      this.internshipForm.value.phone,
-      'professional')
-     .subscribe(
-       ()=>{
-         this.Alertsms=true;
-         this.internshipForm.reset();
-         
-       }
-       );
-
-  
-     
-}
-
-
+  onFileSelected(element) {
+    this.uploadedFile= element.target.files[0] as File;
+    console.log(this.uploadedFile);
+  }
+  onUpload() {
+   const formData = new FormData();
+   formData.append("image", this.uploadedFile, this.uploadedFile.name);
+  this.internshipService.fileupload(formData)
+  .subscribe(res=>console.log(res));
+    }
+    onATtachFile(){
+      this.attachfile = true;
+    }
 }

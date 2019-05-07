@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" style=" background-color:#fff;
+<nav *ngIf="userService.hidemainnav()" class="navbar navbar-expand-lg navbar-light sticky-top" style=" background-color:#fff;
 font-family:-apple-system,
  BlinkMacSystemFont, 'Segoe UI',
  Roboto, Oxygen, Ubuntu, Cantarell,
@@ -21,13 +21,13 @@ font-family:-apple-system,
         > <strong>Home</strong><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]= "['/internships/new']" style="color:rgb(5, 9, 12);">Offer Internship</a>
+        <a class="nav-link" href="#" [routerLink]= "['/internships/new-internship']" style="color:rgb(5, 9, 12);">Offer Internship</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" style="color:rgb(5, 9, 12);">Sign in</a>
       </li>
       <li class="nav-item">
-      <button type="button"
+      <button type="button" [routerLink]= "['/users/new-user']"
         class="btn btn-outline-success nav-link"
         style="color:rgb(5, 9, 12);">
         Join <strong>+</strong>
@@ -38,14 +38,11 @@ font-family:-apple-system,
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse d-inline-flex justify-content-around" id="navbarSupportedContent">
-      <form class="form-inline my-2 my-lg-0">
-          <input class="form-control  mr-sm-2" type="search" placeholder="Find Internship" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
     <ul class="navbar-nav ">
+     
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">    
-Marketing
+         Marketing
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">subcategory</a>
@@ -54,7 +51,8 @@ Marketing
           <a class="dropdown-item" href="#">subcategory</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+     
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Science
           </a>
@@ -64,8 +62,9 @@ Marketing
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">subcategory</a>
           </div>
-        </li>
-        <li class="nav-item dropdown">
+          </li>
+     
+         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Agriculture
             </a>
@@ -79,7 +78,7 @@ Marketing
      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Education & Training 
+       Education & Training 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">subcategory</a>
@@ -88,6 +87,7 @@ Education & Training
           <a class="dropdown-item" href="#">subcategory</a>
         </div>
       </li>
+     
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Arts
@@ -99,8 +99,10 @@ Education & Training
             <a class="dropdown-item" href="#">subcategory</a>
           </div>
         </li>
+        
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">IT 
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              IT 
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">subcategory</a>
@@ -109,6 +111,7 @@ Education & Training
               <a class="dropdown-item" href="#">subcategory</a>
             </div>
           </li>
+          
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Architecture & Construction
@@ -128,18 +131,3 @@ Education & Training
 
 
 <router-outlet></router-outlet>
-
-
-    <!-- Footer -->
-    <footer  style="text-align:center; margin-bottom: 0px;background-color: #4e5559;color: #fff;">
-  
-      <!-- Copyright -->
-      <hr>
-      <div >© 2019 Copyright | All rights reserved.
-        <a style="color:white;" href="https://angular-piemis.herokuapp.com/">UniIntern.com</a>
-      </div>
-      <br>
-      <!-- Copyright -->
-    
-    </footer>
-    <!-- Footer -->
