@@ -3,16 +3,16 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/user.service';
 
 @Component({
-  selector: 'app-new-user',
-  templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.scss']
+  selector: 'app-new-intern',
+  templateUrl: './new-intern.component.html',
+  styleUrls: ['./new-intern.component.scss']
 })
-export class NewUserComponent implements OnInit {
-newuserForm: FormGroup;
+export class NewInternComponent implements OnInit {
+newinternForm: FormGroup;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.newuserForm = new FormGroup({
+    this.newinternForm = new FormGroup({
       fname: new FormControl(),
       lname: new FormControl(),
       email: new FormControl(),
@@ -23,16 +23,16 @@ newuserForm: FormGroup;
 
   }
   onSubmit() {
-    console.log(this.newuserForm.value.password);
+    console.log(this.newinternForm.value.password);
     this.userService.regIntern(
-      this.newuserForm.value.fname,
-      this.newuserForm.value.lname,
-      this.newuserForm.value.email,
-      this.newuserForm.value.password,
-      this.newuserForm.value.phone,
+      this.newinternForm.value.fname,
+      this.newinternForm.value.lname,
+      this.newinternForm.value.email,
+      this.newinternForm.value.password,
+      this.newinternForm.value.phone,
       'intern').subscribe(response => {
       alert('account created');
-      this.newuserForm.reset();
+      this.newinternForm.reset();
       console.log(response)},
       err => {console.error(err);})
 

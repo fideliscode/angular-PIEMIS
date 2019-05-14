@@ -6,13 +6,15 @@ import { InternshipsComponent } from './internships/internships.component';
 import { InternshipComponent } from './internship/internship.component';
 import { NewInternshipComponent } from './new-internship/new-internship.component';
 import { AppPasswordDirective } from './app-password.directive';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [InternshipsComponent, InternshipComponent, NewInternshipComponent, AppPasswordDirective],
   imports: [
     CommonModule,
     InternshipsRoutingModule,
-    ReactiveFormsModule,FormsModule
+    ReactiveFormsModule,FormsModule,
+    HttpClientModule
   ]
 })
 export class InternshipsModule { }

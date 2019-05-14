@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UserService } from 'src/app/user.service';
 
 
 @Component({
@@ -9,19 +10,26 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class UserComponent implements OnInit {
 userForm: FormGroup;
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userForm = new FormGroup({
-          
+
           email: new FormControl(),
           password: new FormControl(),
 
 });
   }
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.userForm.value);
+    console.log(this.userForm.value.password);
+    this.userService.logUser(
+      this.userForm.value.email,
+      this.userForm.value.password,
+
+      'professional').subscribe(response => {
+      this.userForm.reset();
+      console.log(response)},
+      err => {console.error(err);})
   }
 
 

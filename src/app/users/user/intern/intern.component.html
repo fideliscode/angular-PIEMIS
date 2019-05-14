@@ -1,28 +1,307 @@
-<nav class="navbar navbar-expand-lg navbar-dark  " style="background-color:#4e5559; ">
+<hr>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1>Johnny</h1></div>
+        <div class="col-sm-2">
+            <a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="assets/img/studentprofile.JPG"></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
 
-    <div class="collapse navbar-collapse  " id="navbarSupportedContent">
-
-          <ul class="navbar-nav mx-5 " style="padding-left:50px;" >
-              <li class="nav-item px-5" >
-                <a class="nav-link" href="#"><strong>MY PROFILE</strong></a>
-              </li>
-              <li class="nav-item px-5">
-                <a class="nav-link" href="#"><strong>MY INTERNSHIPS</strong></a>
-              </li>
-              <li class="nav-item px-5">
-                  <a class="nav-link" href="#"> <strong>NOTIFICATIONS</strong> </a>
-              </li>
-              <li class="nav-item px-5">
-                  <a class="nav-link" href="#"> <strong>PRODUCTS</strong> </a>
-              </li>
-
+            <ul class="list-group">
+                <li class="list-group-item text-muted">MY PROFILE</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> 2.13.2014</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Last seen</strong></span> Yesterday</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Real name</strong></span> Joseph Doe</li>
 
             </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">WEBSITE<i class="fa fa-link fa-1x"></i></div>
+                <div class="panel-body"><a href="https://www.hellenlifetalks.com">hellenlifetalks.com</a></div>
+            </div>
+
+            <ul class="list-group">
+                <li class="list-group-item text-muted">ACTIVITY<i class="fa fa-dashboard fa-1x"></i></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>PROJECTS DONE</strong></span>20</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>ONGOING PROJECTS</strong></span>2</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>PENDING PROJECTS</strong></span>3</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>RATING</strong></span>4/5</li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">SOCIAL MEDIA</div>
+                <div class="panel-body">
+                    <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+                </div>
+            </div>
+
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-9">
+
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active"><a href="#home" data-toggle="tab">HOME</a></li>
+                <li><a href="#messages" data-toggle="tab">NOTIFICATIONS</a></li>
+                <li><a href="#settings" data-toggle="tab">SETTINGS</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                  <hr>
+                  <p> You don't have any projects done yet</p>
+
+                    <hr>
+
+                </div>
+                <!--/tab-pane-->
+                <div class="tab-pane" id="messages">
+
+                    <h2></h2>
+
+                    <ul class="list-group">
+                        <li class="list-group-item text-muted">Inbox</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Here is your a link to the latest summary report from the..</a> 2.13.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been a request on your account since that was..</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Wesm sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+
+                    </ul>
+
+                </div>
+                <!--/tab-pane-->
+                <div class="tab-pane" id="settings">
+
+                    <hr>
+                    <h3><strong>PERSONAL INFO: </strong></h3>
+                    <form class="form" action="##" method="post" id="registrationForm">
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="first_name">
+                                    <h4>First name</h4></label>
+                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="last_name">
+                                    <h4>Last name</h4></label>
+                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="phone">
+                                    <h4>Phone</h4></label>
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="mobile">
+                                    <h4>Mobile</h4></label>
+                                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="email">
+                                    <h4>Email</h4></label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="dob">
+                                    <h4>Date  of Birth:</h4></label>
+                                <input type="date" class="form-control" id="date" placeholder="Birth date" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="password">
+                                    <h4>Password</h4></label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="password2">
+                                    <h4>Verify</h4></label>
+                                <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                            </div>
+                        </div>
+                        <br>
+                          <hr>
+                          <div>
+                        <h3><strong> PROFILE:</strong></h3>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="bio">
+                                    <h4>Bio</h4></label>
+                                <textarea cols="50" rows="5" class="form-control" name="bio" id="bio" placeholder="Write bio" title="enter bio if any."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="image">
+                                    <h4>Image</h4></label>
+                                <input type="file"  name="image" id="image"  accept="image/*">
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="location">
+                                    <h4>Location: </h4></label>
+
+
+
+      <select>
+                               <option value="input text"></option>
+                               <option value="AR">ARUSHA</option>
+                               <option value="DO">DODOMA</option>
+                               <option value="GE">GEITA</option>
+                               <option value="IR">IRINGA</option>
+                               <option value="KAG">KAGERA</option>
+                               <option value="KAT">KATAVI</option>
+                               <option value="KIG">KIGOMA</option>
+                               <option value="KIL">KILIMANJARO</option>
+                               <option value="LI">LINDI</option>
+                               <option value="MAN">MANYARA</option>
+                               <option value="MAR">MARA</option>
+                               <option value="MB">MBEYA</option>
+                               <option value="MO">MOROGORO</option>
+                               <option value="MT">MTWARA</option>
+                               <option value="MW">MWANZA</option>
+                               <option value="NJ">NJOMBE</option>
+                               <option value="PW">PWANI</option>
+                               <option value="RUK">RUKWA</option>
+                               <option value="RUV">RUVUMA</option>
+                               <option value="SH">SHINYANGA</option>
+                               <option value="SIM">SIMIYU</option>
+                               <option value="SIN">SINGIDA</option>
+
+                               <option value="SO">SONGWE</option>
+
+                               <option value="TAB">TABORA</option>
+
+                               <option value="TAN">TANGA</option>
+                                         </select>
+
+
+                        </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="institution">
+                                    <h4>Institution: </h4></label>
+
+
+
+      <select>
+                               <option value="input text"></option>
+                               <option value="AJ">AJUCo</option>
+                               <option value="AK">AKU</option>
+                               <option value="AM">AMUCTA</option>
+                               <option value="AR">ARU</option>
+                               <option value="CA">CARUMUCo</option>
+                               <option value="CU">CUHAS</option>
+                               <option value="DU">DUCE</option>
+                               <option value="E">ETU</option>
+                               <option value="H">HKMU</option>
+                               <option value="IMS">IMS</option>
+                               <option value="IMT">IMTU</option>
+                               <option value="JO">JOKUCo</option>
+                               <option value="JU">JUCo</option>
+                               <option value="KC">KCMUCo</option>
+                               <option value="KI">KIU-DAR</option>
+                               <option value="MA">MARUCo</option>
+                               <option value="MJ">MJNUAT</option>
+                               <option value="MM">MMU</option>
+                               <option value="MO">MoCU</option>
+                               <option value="MU">MU</option>
+                               <option value="MUC">MUCE</option>
+                               <option value="MUH">MUHAS</option>
+                               <option value="MUM">MUM</option>
+                               <option value="MUS">MUST</option>
+                               <option value="MW">MWECAU</option>
+                               <option value="NM">NMAIST</option>
+                               <option value="O">OUT</option>
+                               <option value="RU">RUCU</option>
+                               <option value="SA">SAUT</option>
+                               <option value="SE">SEKOMU</option>
+                               <option value="SF">SFUCHAS</option>
+                               <option value="SJUCH">SJUCHAS</option>
+                               <option value="SJUCM">SJUCMC</option>
+                               <option value="SJUI">SJUIT</option>
+                               <option value="SJU">SJUT</option>
+                               <option value="SM">SMMUCo</option>
+                               <option value="ST">STeMMUCO</option>
+                               <option value="SU">SUA</option>
+                               <option value="SUM">SUMAIT</option>
+                               <option value="SUZ">SUZA</option>
+                               <option value="PW">TEKU</option>
+                               <option value="TU">TUMA</option>
+                               <option value="TUM">TUMADARCo</option>
+                               <option value="UA">UAUT</option>
+                               <option value="UDO">UDOM</option>
+                               <option value="UD">UDSM</option>
+                               <option value="UOA">UoA</option>
+                               <option value="UOB">UoB</option>
+                               <option value="UOI">UoI</option>
+                               <option value="Z">ZU</option>
+                                         </select>
+
+
+                        </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!--/tab-pane-->
+        </div>
+        <!--/tab-content-->
+
     </div>
-  </nav>
+    <!--/col-9-->
+</div>
+<!--/row-->

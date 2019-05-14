@@ -7,12 +7,15 @@
 </div>
  <!-- middle section   -->
 <div class="col-lg-6">
+    <h2><strong>INTERN REGISTRATION</strong></h2>
+    <hr>
 <div class="card shadow">
+
 <div class="card-header text-center"
 style="background-color: #008d0d; color: #fff;">
 PERSONAL INFORMATION
 </div>
-<form class="text-center border border-light p-5" [formGroup]="newuserForm" (ngSubmit)="onSubmit()" >
+<form class="text-center border border-light p-5" [formGroup]="newinternForm" (ngSubmit)="onSubmit()" >
   <div class="form-group">
     <input type="text" formControlName="fname"
     class="form-control mb-4" placeholder="First Name">
@@ -33,7 +36,7 @@ PERSONAL INFORMATION
   </div>
   <button class="btn btn-success btn-block btn-sm "
   style="background-color: #008d0d;" type="submit"
-  [disabled]="!newuserForm.valid">Sign up for free
+  [disabled]="!newinternForm.valid">Sign up for free
   </button>
 
 </form>

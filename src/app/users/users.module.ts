@@ -7,11 +7,12 @@ import { UserComponent } from './user/user.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { AppPasswordDirective } from './app-password.directive';
 import { InternComponent } from './user/intern/intern.component';
+import { NewInternComponent } from './new-intern/new-intern.component';
 
 
 
 @NgModule({
-  declarations: [UsersComponent, UserComponent, NewUserComponent,AppPasswordDirective, InternComponent],
+  declarations: [UsersComponent, UserComponent, NewUserComponent,AppPasswordDirective, InternComponent, NewInternComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
