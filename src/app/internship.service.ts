@@ -11,7 +11,7 @@ export class InternshipService {
 employees: Employee[];
 regions: Region[];
 industries: Industry[];
-Apiurl = 'http://127.0.0.1:3000';
+Apiurl = 'https://node-rest-piemis.herokuapp.com';
 
   constructor(private httpclient: HttpClient) {
    }

@@ -15,7 +15,7 @@ export class UserService {
   companyForm:boolean;
   complete:boolean;
   mainnav:boolean;
-  Apiurl = 'http://127.0.0.1:3000';
+  Apiurl = 'https://node-rest-piemis.herokuapp.com';
 
   constructor(private httpclient: HttpClient) {
     this.personalForm=true;
