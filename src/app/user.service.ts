@@ -15,6 +15,7 @@ export class UserService {
   companyForm:boolean;
   complete:boolean;
   mainnav:boolean;
+  Apiurl = 'http://127.0.0.1:3000';
 
   constructor(private httpclient: HttpClient) {
     this.personalForm=true;
@@ -28,7 +29,7 @@ export class UserService {
     const body = JSON.stringify({fname, lname, email, password, phone, role});
     console.log(body);
 
-    return this.httpclient.post('https://node-rest-piemis.herokuapp.com/users', body,
+    return this.httpclient.post(this.Apiurl+ '/users/', body,
       {headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})
     })
   }
@@ -38,7 +39,7 @@ export class UserService {
     const body = JSON.stringify({email, password, role});
     console.log(body);
 
-    return this.httpclient.post('https://node-rest-piemis.herokuapp.com/users', body,
+    return this.httpclient.post(this.Apiurl+ '/users/', body,
       {headers :new HttpHeaders({'Content-Type': 'application/json',
        'X-Requested-With': 'XMLHttpRequest'})
     });
@@ -54,7 +55,7 @@ regProfessional(
   role: string){
 
   const body = JSON.stringify({fname, lname, email, password, phone, role});
-  return this.httpclient.post('https://node-rest-piemis.herokuapp.com/users', body,
+  return this.httpclient.post(this.Apiurl+ '/users/', body,
   {headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})})
   .pipe(
    map(
@@ -84,7 +85,7 @@ regCompany(
   const id = this.getUserid();
   const body = JSON.stringify({company:{companyName,industryType,noEmployees, website, address, region}});
   console.log(body);
-  return this.httpclient.put('https://node-rest-piemis.herokuapp.com/users/' + id, body,
+  return this.httpclient.put(this.Apiurl+ '/users/' + id, body,
   {headers:new HttpHeaders({'Content-Type':'application/json', 'X-Requested-With': 'XMLHttpRequest' })})
   .pipe(
     map((res: User)=>{

@@ -104,7 +104,7 @@
                                   </button>
             </form>
 
-  <form *ngIf = "userService.getcompanyForm()" class=" border border-light p-5" [formGroup]="companyForm"  (ngSubmit)="onCompanySubmit()">
+  <form *ngIf = "this.userService.getcompanyForm()" class=" border border-light p-5" [formGroup]="companyForm"  (ngSubmit)="onCompanySubmit()">
                           <div class="form-row">
                             <div class="form-group col-md-6 ">
                             <label for="companyName">Company Name</label>
