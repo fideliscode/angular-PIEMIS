@@ -1,0 +1,161 @@
+<nav class="navbar navbar-expand-lg navbar-dark  " style="background-color:#4e5559; ">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+
+          <ul class="navbar-nav mx-5 " style="padding-left:50px;" >
+              <li class="nav-item px-5" >
+                <a class="nav-link" [routerLink]= "['/internships/new-internship']"><strong>INTERNSHIPS</strong></a>
+              </li>
+              <li class="nav-item px-5">
+                <a class="nav-link" href="#"><strong>INTERN POOLS</strong></a>
+              </li>
+              <li class="nav-item px-5">
+                  <a class="nav-link" href="#"> <strong>ACCOUNT SETTING</strong> </a>
+              </li>
+              <li class="nav-item px-5">
+                  <a class="nav-link" href="#"> <strong>PRODUCTS</strong> </a>
+              </li>
+
+
+            </ul>
+    </div>
+  </nav>
+<br>
+
+<div class="container-fluid " >
+<div class="row">
+  <!-- left section -->
+<div class="col-md-3">
+</div>
+ <!-- middle section   -->
+<div class="col-md-6">
+  <div class = "alert alert-success alert-dismissable" *ngIf = "userService.getcompanyForm()"  >
+   <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+      &times;
+   </button>
+   Successfully submitted! Just there yet.
+</div>
+<div class = "alert alert-success alert-dismissable" *ngIf = "userService.getcomplete()"  >
+   <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+      &times;
+   </button>
+   Successfully submitted! One more to go.
+</div>
+<h4>RECRUITER REGISTRATION</h4>
+<hr>
+<div class="card shadow">
+          <div class="card-header text-center"
+            style="background-color: #008d0d; color: #fff;" *ngIf = "userService.getpersonalForm()">
+            Personal information
+          </div>
+          <div class="card-header text-center"
+              style="background-color: #008d0d; color: #fff;" *ngIf = "userService.getcompanyForm()">
+              Company information
+          </div>
+
+          <form *ngIf = "userService.getpersonalForm()" class="border border-light p-5" [formGroup]="personalForm" (ngSubmit)="onPersonalSubmit()">
+                                  <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                          <label for="fname">First Name</label>
+                                          <input type="text" formControlName="fname" id="fname"
+                                          class="form-control mb-4" placeholder="First Name">
+                                        </div>
+
+                                          <div class="form-group col-md-6">
+                                          <label for="lname">Last Name</label>
+                                          <input type="text"  formControlName="lname" id="lname"
+                                          class="form-control mb-4" placeholder="Last Name">
+                                          </div>
+                                  </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6 ">
+                                            <label for="email">Email</label>
+                                            <input type="email"  formControlName="email" id="email"
+                                            class="form-control mb-4" placeholder="email">
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                            <label for="phone">Phone Number</label>
+                                            <input type="tel"  formControlName="phone" id="phone"
+                                            class="form-control mb-4" placeholder="Phone Number">
+                                            </div>
+                                    </div>
+                                    <label for="password">Password</label>
+                                  <div class="form-row ">
+                                    <div class="form-group col-md-10">
+                                      <input id="password" type={{this.type}} formControlName="password"
+                                      class="form-control"  placeholder="password"  >
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                      <button class="btn btn-success" (click)="toggle()">{{this.hide}}</button>
+                                    </div>
+                                </div>
+
+                                  <button class="btn btn-success btn-block btn-sm "
+                                  style="background-color: #008d0d;" type="submit"
+                                  [disabled]="!personalForm.valid">Sign up for free
+                                  </button>
+            </form>
+
+  <form *ngIf = "userService.getcompanyForm()" class=" border border-light p-5" [formGroup]="companyForm"  (ngSubmit)="onCompanySubmit()">
+                          <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                            <label for="companyName">Company Name</label>
+                            <input type="text" formControlName="companyName"
+                            class="form-control mb-4" placeholder="companyName">
+                            </div>
+
+                            <div class="form-group col-md-6 ">
+                              <label for="noEmployees">Number of Employees</label>
+                            <select formControlName="noEmployees" id="noEmployees" class="browser-default custom-select">
+                                <option [value]="employee.range" *ngFor="let employee of internshipService.getEmployeesRange()">{{employee.range}}</option>
+                            </select>
+                            </div>
+                          </div>
+
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="industryType">Industry Type</label>
+                              <select formControlName="industryType" id="industryType" class="browser-default custom-select">
+                                <option [value]="industry.name" *ngFor="let industry of internshipService.getIndustries()">{{industry.name}}</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="website">Website</label>
+                              <input type="text" id="website" formControlName="website" id="website"
+                              class="form-control mb-4" placeholder="website">
+                            </div>
+                          </div>
+
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="address">Company Address</label>
+                                <textarea type="address"  id="address" formControlName="address" ></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="region">Region</label>
+                                <select formControlName="region" class="browser-default custom-select">
+                                <option [value]="region.region" *ngFor="let region of internshipService.getRegions()">{{region.region}}</option>
+                            </select>
+                           </div>
+                          </div>
+                          <button class="btn btn-success btn-sm "
+                          style="background-color: #008d0d;" type="submit"
+                          [disabled]="!companyForm.valid">Next
+                          </button>
+            </form>
+</div>
+
+<!-- right section -->
+<div class="col-md-3">
+
+</div>
+</div>
+</div>

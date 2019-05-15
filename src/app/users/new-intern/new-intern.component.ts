@@ -9,7 +9,11 @@ import { UserService } from 'src/app/user.service';
 })
 export class NewInternComponent implements OnInit {
 newinternForm: FormGroup;
-  constructor(private userService: UserService) { }
+hide: string;
+type: string;
+  constructor(private userService: UserService) {
+    this.hide= 'show';
+    this.type= 'password';}
 
   ngOnInit() {
     this.newinternForm = new FormGroup({
@@ -21,6 +25,15 @@ newinternForm: FormGroup;
 
 });
 
+  }
+  toggle() {
+      if (this.hide !== 'show') {
+        this.hide = 'show';
+        this.type = 'password';
+      } else {
+        this.hide = 'hide';
+        this.type = 'text';
+      }
   }
   onSubmit() {
     console.log(this.newinternForm.value.password);

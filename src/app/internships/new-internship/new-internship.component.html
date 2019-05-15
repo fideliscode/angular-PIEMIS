@@ -1,77 +1,102 @@
-<nav class="navbar navbar-expand-lg navbar-dark  " style="background-color:#4e5559; ">
-    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-    aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse  " id="navbarSupportedContent">
-      
-          <ul class="navbar-nav mx-5 " style="padding-left:50px;" >
-              <li class="nav-item px-5" >
-                <a class="nav-link" href="#"><strong>INTERNSHIPS</strong></a>
-              </li>
-              <li class="nav-item px-5">
-                <a class="nav-link" href="#"><strong>INTERN POOLS</strong></a>
-              </li>
-              <li class="nav-item px-5">
-                  <a class="nav-link" href="#"> <strong>ACCOUNT SETTING</strong> </a>
-              </li>
-              <li class="nav-item px-5">
-                  <a class="nav-link" href="#"> <strong>PRODUCTS</strong> </a>
-              </li>
-              
-            
-            </ul>
-    </div>
-  </nav>
-
-<!-- navigation path goes here -->
-<nav class="ml-2">internship/personal info</nav>
 <br>
-<div class="container-fluid " >
-<div class="row">
-  <!-- left section -->
-<div class="col-lg-3">
-</div>
- <!-- middle section   -->
-<div class="col-lg-6">
-<div class="card shadow">
-<div class="card-header text-center" 
-style="background-color: #008d0d; color: #fff;">
-PERSONAL INFORMATION
-</div>
-<form class="text-center border border-light p-5" [formGroup]="internshipForm" (ngSubmit)="onSubmit()" >      
-  <div class="form-group">
-    <input type="text" formControlName="fname"
-    class="form-control mb-4" placeholder="First Name">
-                            
-    <input type="text"  formControlName="lname"
-    class="form-control mb-4" placeholder="Last Name">
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-lg-3 col-md-3"></div>
+        <div class="col-lg-6 col-md-6">
+          <h4>INTERNSHIP REGISTRATION</h4>
+            <hr>
+    <div class="card">
+    <div class = "alert alert-success alert-dismissable" *ngIf = "userService.getcomplete()"  >
+       <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+          &times;
+       </button>
+      Successfully submitted! One more to go.
+    </div>
+    <div class="card-header text-center"
+    style="background-color: #008d0d; color: #fff;" >
+    Internship Details
+    </div>
+    <form  class=" border border-light p-5" [formGroup]="internshipForm"
+    (ngSubmit)="onUpload()">
+             <div class="form-row">
+              <div class="form-group  col-md-6">
+                <label for="intpos">Internship Position</label>
+                <input id="intpos" type="text" formControlName="internshipPositon"
+                class="form-control mb-4" >
+              </div>
 
-    <input type="email"  formControlName="email"
-    class="form-control mb-4" placeholder="email">
+                <div class="form-group col-md-6">
+                  <label for="industryType">Internship Category</label>
+                  <select formControlName="name" id="industryType" class="browser-default custom-select">
+                      <option [value]="industry.name" *ngFor="let industry of internshipService.getIndustries()">{{industry.name}}</option>
 
-    <input type="tel"  formControlName="phone"
-    class="form-control mb-4" placeholder="Phone Number">
-  </div>
-  <div class="form-group form-inline">
-    <input type="password" formControlName="password" 
-    class="form-control" appPassword placeholder="password"  > 
-    <!-- password hide/show directive is inserted here -->  
-  </div>
-  <button class="btn btn-success btn-block btn-sm " 
-  style="background-color: #008d0d;" type="submit" 
-  [disabled]="!internshipForm.valid">Sign up for free
-  </button>
+                    </select>
+                  </div>
+                </div>
 
-</form>
-</div>
-</div>
-<!-- right section -->
-<div class="col-lg-3">
-    <button class="btn btn-success  btn-sm shadow ml-4">+ ADD INTERNSHIP</button>
-</div>
-</div>
-</div>
+
+                <div class="form-group shadow-textarea">
+                  <label for="intfunc">Internship Activities</label>
+                  <textarea id="intfunc" class="form-control " formControlName="internshipfunction"
+                  rows="5" placeholder="Intern will be responsible for..."></textarea>
+                 </div>
+                <div class="form-group ">
+                  <label for="desc">Qualifications</label>
+                  <textarea id="desc" class="form-control " formControlName="description"
+                  rows="5" placeholder="Applicant must..."></textarea>
+                </div>
+
+
+             <div  class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="tg1" >Tag 1</label>
+                    <input id="tg1" type="text" formControlName="tag1"
+                    class="form-control"  placeholder="Tag 1" >
+                  </div>
+
+                  <div class="form-group col-md-4 ">
+                      <label for="tg2" >Tag 2</label>
+                    <input id="tg2" type="text" formControlName="tag2"
+                    class="form-control"  placeholder="Tag 1" >
+                  </div>
+
+                  <div class="form-group col-md-4 ">
+                      <label for="tg3" >Tag 3</label>
+                    <input id="tg3" type="text" formControlName="tag3"
+                    class="form-control"  placeholder="Tag 3">
+                  </div>
+              </div>
+
+
+          <div class="form-group" *ngIf="this.attachfile" >
+              <label class="mr-2">File Upload</label>
+            <input name="file" type="file" (change)="onFileSelected($event)" >
+          </div>
+
+          <div class="form-row">
+              <div class="form-group col-md-4">
+                  <button class="btn btn-success shadow" (click)="onATtachFile()"
+                    type="submit"
+                    [disabled]="!this.attachfile">Attach File
+                  </button>
+                </div>
+            <div class="form-group col-md-4">
+              <button class="btn btn-success shadow"
+                type="submit"
+                [disabled]="!internshipForm.valid">Preview
+              </button>
+            </div>
+            <div class="form-group col-md-4">
+              <button class="btn btn-success shadow"
+              type="submit"
+              [disabled]="!internshipForm.valid"   >Save
+              </button>
+            </div>
+          </div>
+    </form>
+            </div>
+
+        <div class="col-lg-3 col-md-3"></div>
+
+    </div>
+</div>  

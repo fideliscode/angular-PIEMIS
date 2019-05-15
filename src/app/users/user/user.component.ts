@@ -10,7 +10,11 @@ import { UserService } from 'src/app/user.service';
 })
 export class UserComponent implements OnInit {
 userForm: FormGroup;
-  constructor(private userService: UserService) { }
+hide: string;
+type: string;
+  constructor(private userService: UserService) {
+    this.hide= 'show';
+    this.type='password';}
 
   ngOnInit() {
     this.userForm = new FormGroup({
@@ -19,6 +23,15 @@ userForm: FormGroup;
           password: new FormControl(),
 
 });
+  }
+  toggle() {
+      if (this.hide !== 'show') {
+        this.hide = 'show';
+        this.type = 'password';
+      } else {
+        this.hide = 'hide';
+        this.type = 'text';
+      }
   }
   onSubmit() {
     console.log(this.userForm.value.password);
