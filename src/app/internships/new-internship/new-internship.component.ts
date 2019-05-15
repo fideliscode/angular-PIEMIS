@@ -18,7 +18,7 @@ export class NewInternshipComponent implements OnInit {
   attachfile: boolean;
 
 
-  constructor(private userService: UserService, private internshipService: InternshipService) {
+  constructor(public userService: UserService, public internshipService: InternshipService) {
     this.attachfile = false;
     }
 

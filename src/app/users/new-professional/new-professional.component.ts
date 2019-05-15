@@ -20,7 +20,7 @@ user: User;
 hide: string;
 type: string;
 
-  constructor(private userService: UserService, private internshipService: InternshipService) {
+  constructor(public userService: UserService, public internshipService: InternshipService) {
     this.hide = 'show';
     this.type = 'password';
 

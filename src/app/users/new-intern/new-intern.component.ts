@@ -11,7 +11,7 @@ export class NewInternComponent implements OnInit {
 newinternForm: FormGroup;
 hide: string;
 type: string;
-  constructor(private userService: UserService) {
+  constructor(public userService: UserService) {
     this.hide= 'show';
     this.type= 'password';}
 
