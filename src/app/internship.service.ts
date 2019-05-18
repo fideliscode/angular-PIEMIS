@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { map,tap } from 'rxjs/operators';
+import {Internship} from './internship.interface';
 import {Employee} from './model/employee';
 import {Region} from './model/region';
 import {Industry} from './model/industry';
@@ -11,6 +14,8 @@ export class InternshipService {
 employees: Employee[];
 regions: Region[];
 industries: Industry[];
+internship : Internship;
+// Apiurl = 'localhost:3000';
 Apiurl = 'https://node-rest-piemis.herokuapp.com';
 
   constructor(private httpclient: HttpClient) {
@@ -20,9 +25,38 @@ fileupload(formdata){
 	return this.httpclient.post(this.Apiurl+'/upload', body,
   {headers :new HttpHeaders({'Content-Type': 'application/json',
    'X-Requested-With': 'XMLHttpRequest'})});
-
-
 }
+
+
+regInternship(value){
+  const internshipPosition = value.internshipPosition; 
+  const description = value.description; 
+  const qualifications = value.qualifications; 
+  const subcategory = value.subcategory;
+  const tags = [value.tag1, value.tag2, value.tag3];
+  const body = JSON.stringify({internshipPosition,description,qualifications,subcategory,tags});
+  console.log("before api end point")
+  return this.httpclient.post(this.Apiurl+'/internships', body,
+  {headers :new HttpHeaders({'Content-Type': 'application/json',
+   'X-Requested-With': 'XMLHttpRequest'})})
+  .pipe(
+   map(
+      (res: Internship)=>{
+        this.internship = res;
+        console.log('in map operator');
+        return this.internship._id;})
+   )
+   .pipe(
+    tap(
+      regdata2=>{
+      localStorage.setItem('internship_id', this.internship._id);
+      console.log('localstorage');
+      }
+    ));
+    }
+    
+
+
 public getIndustries(){
 	return this.industries = [
     {name:'Computers & Technology', subcategory:['Web Programming','Database Management',

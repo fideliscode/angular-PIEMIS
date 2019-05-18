@@ -24,35 +24,30 @@ export class NewInternshipComponent implements OnInit {
 
   ngOnInit() {
     this.internshipForm = new FormGroup({
-      internshipPositon: new FormControl(), // required
-      internshipfunction: new FormControl(), // required
-      path: new FormControl(),
-      filetype: new FormControl(),
+      internshipPosition: new FormControl(), // required
       description: new FormControl(), // required
-      name: new FormControl(),
+      qualifications: new FormControl(), // required
       subcategory: new FormControl(),
       tag1: new FormControl(),
       tag2: new FormControl(),
       tag3: new FormControl(),
-      isPublished: new FormControl(),
     });
   }
   onFileSelected(element) {
     this.uploadedFile= element.target.files[0] as File;
     console.log(this.uploadedFile);
   }
-  onUpload() {
-   const formData = new FormData();
-   formData.append("image", this.uploadedFile, this.uploadedFile.name);
-  this.internshipService.fileupload(formData)
-  .subscribe(res=>console.log(res));
+    
+    oncreateInternship(){
+   this.internshipService.regInternship(this.internshipForm.value)
+   .subscribe(
+      () => {
+        this.internshipForm.reset();
+      }
+      );
     }
     
-    onRegInternship(){
-   console.log(this.internshipForm.value);
-    }
-    
-    onATtachFile(){
+    onAttachFile(){
       this.attachfile = true;
     }
 }

@@ -49,7 +49,7 @@ font-family:-apple-system,
       <ul class="navbar-nav mr-0">
         <li class="nav-item dropdown " role="presentation" *ngFor="let category of internshipService.getIndustries(); let i=index" >
           
-          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link ml-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        {{category.name}}
           </a>
           <ul *ngIf ="i == 0" class="dropdown-menu dropdown-menu-left shadow">
@@ -75,27 +75,22 @@ font-family:-apple-system,
   </div>
 
 <div class="row">
- 
   <div class="col-md-12">
     <router-outlet></router-outlet>
   </div>
-  
-    
+</div>
 </div>
 
-</div>
-    <!-- Footer -->
-    <footer  style="text-align:center;  bottom: 0;background-color: #4e5559;color: #fff;">
 
-      <!-- Copyright -->
-      <hr>
-      <div >© 2019 Copyright | All rights reserved.
-        <a style="color:white;" href="https://angular-piemis.herokuapp.com/">UniIntern.com</a>
-      </div>
-      <br>
-      <!-- Copyright -->
+<footer class="mb-0 ml-0 mr-0" style="text-align:center; background-color: #4e5559;color: #fff;">
+  <hr>
+  <div>
+    © 2019 Copyright | All rights reserved.
+    <a style="color:white;" href="https://angular-piemis.herokuapp.com/">UniIntern.com</a>
+  </div>
+  <br>
+</footer>
 
-    </footer>
-    <!-- Footer -->
+   
   
 
