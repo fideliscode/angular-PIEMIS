@@ -47,6 +47,11 @@ export class NewInternshipComponent implements OnInit {
   this.internshipService.fileupload(formData)
   .subscribe(res=>console.log(res));
     }
+    
+    onRegInternship(){
+   console.log(this.internshipForm.value);
+    }
+    
     onATtachFile(){
       this.attachfile = true;
     }

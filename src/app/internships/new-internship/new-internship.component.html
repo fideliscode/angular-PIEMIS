@@ -17,7 +17,7 @@
     Internship Details
     </div>
     <form  class=" border border-light p-5" [formGroup]="internshipForm"
-    (ngSubmit)="onUpload()">
+    (ngSubmit)="onRegInternship()">
              <div class="form-row">
               <div class="form-group  col-md-6">
                 <label for="intpos">Internship Position</label>
@@ -28,8 +28,13 @@
                 <div class="form-group col-md-6">
                   <label for="industryType">Internship Category</label>
                   <select formControlName="name" id="industryType" class="browser-default custom-select">
-                      <option [value]="industry.name" *ngFor="let industry of internshipService.getIndustries()">{{industry.name}}</option>
-
+                    <optgroup label= {{industry.name}} *ngFor="let industry of internshipService.getIndustries(); let i =index">
+                      <option [ngValue]="subcat"
+                       *ngFor="let subcat of industry.subcategory">
+                        {{subcat}}                   
+                      </option>
+                    </optgroup>
+                      
                     </select>
                   </div>
                 </div>
@@ -38,33 +43,43 @@
                 <div class="form-group shadow-textarea">
                   <label for="intfunc">Internship Activities</label>
                   <textarea id="intfunc" class="form-control " formControlName="internshipfunction"
-                  rows="5" placeholder="Intern will be responsible for..."></textarea>
+                  rows="3" placeholder="Intern will be responsible for..."></textarea>
                  </div>
                 <div class="form-group ">
                   <label for="desc">Qualifications</label>
                   <textarea id="desc" class="form-control " formControlName="description"
-                  rows="5" placeholder="Applicant must..."></textarea>
+                  rows="3" placeholder="Applicant must..."></textarea>
                 </div>
 
 
              <div  class="form-row">
-                  <div class="form-group col-md-4">
+            
+              <div class="form-row">
+                <div class="form-group col-md-4">
                     <label for="tg1" >Tag 1</label>
                     <input id="tg1" type="text" formControlName="tag1"
-                    class="form-control"  placeholder="Tag 1" >
+                    class="form-control"  placeholder="#Tag 1" >
                   </div>
 
                   <div class="form-group col-md-4 ">
                       <label for="tg2" >Tag 2</label>
                     <input id="tg2" type="text" formControlName="tag2"
-                    class="form-control"  placeholder="Tag 1" >
+                    class="form-control"  placeholder="#Tag1" >
                   </div>
 
                   <div class="form-group col-md-4 ">
                       <label for="tg3" >Tag 3</label>
                     <input id="tg3" type="text" formControlName="tag3"
-                    class="form-control"  placeholder="Tag 3">
+                    class="form-control"  placeholder="#Tag 3">
                   </div>
+              </div>
+             <div class="form-row">
+              <div class="form-group col-md-12">
+                 <p class="help-block">Tags are helpful in fast searching</p>
+              </div>
+                
+              </div>
+                  
               </div>
 
 
@@ -74,19 +89,14 @@
           </div>
 
           <div class="form-row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-6">
                   <button class="btn btn-success shadow" (click)="onATtachFile()"
                     type="submit"
                     [disabled]="!this.attachfile">Attach File
                   </button>
                 </div>
-            <div class="form-group col-md-4">
-              <button class="btn btn-success shadow"
-                type="submit"
-                [disabled]="!internshipForm.valid">Preview
-              </button>
-            </div>
-            <div class="form-group col-md-4">
+        
+            <div class="form-group col-md-6">
               <button class="btn btn-success shadow"
               type="submit"
               [disabled]="!internshipForm.valid"   >Save
