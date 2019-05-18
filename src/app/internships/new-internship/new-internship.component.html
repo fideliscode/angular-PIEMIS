@@ -17,7 +17,7 @@
     Internship Details
     </div>
     <form  class=" border border-light p-5" [formGroup]="internshipForm" 
-    (ngSubmit)="onUpload()"> 
+    (ngSubmit)="onCreateInternship()"> 
              <div class="form-row">
               <div class="form-group  col-md-6">
                 <label for="intpos">Internship Position</label>
@@ -27,7 +27,7 @@
     
                 <div class="form-group col-md-6">
                   <label for="industryType">Internship Category</label>       
-                  <select formControlName="name" id="industryType" class="browser-default custom-select">
+                  <select formControlName="subcategory" id="industryType" class="browser-default custom-select">
                       <option [value]="industry.name" *ngFor="let industry of internshipService.getIndustries()">{{industry.name}}</option>
                      
                     </select>
@@ -37,12 +37,12 @@
                  
                 <div class="form-group shadow-textarea">
                   <label for="intfunc">Internship Activities</label>  
-                  <textarea id="intfunc" class="form-control " formControlName="internshipfunction"
+                  <textarea id="intfunc" class="form-control " formControlName="description"
                   rows="5" placeholder="Intern will be responsible for..."></textarea>                      
                  </div>
                 <div class="form-group ">
                   <label for="desc">Qualifications</label>
-                  <textarea id="desc" class="form-control " formControlName="description"
+                  <textarea id="desc" class="form-control " formControlName="qualification"
                   rows="5" placeholder="Applicant must..."></textarea>     
                 </div>
          
@@ -66,33 +66,14 @@
                     class="form-control"  placeholder="Tag 3">
                   </div> 
               </div>
-       
-        
-          <div class="form-group" *ngIf="this.attachfile" >
-              <label class="mr-2">File Upload</label>
-            <input name="file" type="file" (change)="onFileSelected($event)" >
-          </div>
-         
-          <div class="form-row">
-              <div class="form-group col-md-4">
-                  <button class="btn btn-success shadow" (click)="onATtachFile()"
-                    type="submit" 
-                    [disabled]="!this.attachfile">Attach File
-                  </button> 
-                </div> 
-            <div class="form-group col-md-4">
-              <button class="btn btn-success shadow" 
-                type="submit" 
-                [disabled]="!internshipForm.valid">Preview
-              </button> 
-            </div> 
-            <div class="form-group col-md-4">
+   
+            <div class="form-group ">
               <button class="btn btn-success shadow" 
               type="submit" 
-              [disabled]="!internshipForm.valid"   >Save
+              [disabled]="!internshipForm.valid">Save
               </button>  
             </div>
-          </div>  
+           
     </form>
             </div>
         

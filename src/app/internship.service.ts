@@ -19,9 +19,15 @@ fileupload(formdata){
 	return this.httpclient.post('http://127.0.0.1:3000/internships/upload', body,
   {headers :new HttpHeaders({'Content-Type': 'application/json', 
    'X-Requested-With': 'XMLHttpRequest'})});
-  
+}
+ regInternship(value){
+  console.log(value);
 
 }
+
+
+
+
 public getIndustries(){
 	return this.industries = [
     {name:'Programming & tech', subcategory:['web programming','databases',
