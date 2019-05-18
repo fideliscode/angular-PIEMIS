@@ -1,8 +1,9 @@
 .btn-outline-success:hover {
     color: rgb(245, 245, 245) !important;
     background-color:#28a745;
-   
+    border:0px; 
 }
+
 .btn-primary{
     background-color: rgb(5, 9, 12) !important;
 }
@@ -15,4 +16,7 @@
     margin-top: 0; // remove the gap so it doesn't close
     margin-right: 0;
     
+ }
+ .a{
+    color:#212529;
  }
