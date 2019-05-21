@@ -19,9 +19,9 @@ loginForm: FormGroup;
 submitted = false;
   user: User;
   token:string;
-
+  type:string;
   constructor(private authService: AuthService, private formBuilder: FormBuilder,  private route: ActivatedRoute,
-        private router: Router) {
+        private router: Router) {this.type= 'password';
     }
 
   ngOnInit() {

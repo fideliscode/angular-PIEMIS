@@ -12,7 +12,6 @@ import { UserloginComponent } from './userlogin/userlogin.component';
 const routes: Routes = [
   {path: '', component: UsersComponent},
   {path: 'new-user', component: NewUserComponent},
-
   {path: 'new-intern', component: NewInternComponent},
   {path: 'new-professional', component: NewProfessionalComponent},
   {path: 'login', component:UserloginComponent},
