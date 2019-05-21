@@ -6,12 +6,13 @@ import { UsersComponent } from './users/users.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { NewInternComponent } from './new-intern/new-intern.component';
 import { NewProfessionalComponent } from './new-professional/new-professional.component';
+import { InternDashboardComponent } from './intern-dashboard/intern-dashboard.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 
 
 
 @NgModule({
-  declarations: [UsersComponent, NewUserComponent,  NewInternComponent, NewProfessionalComponent, UserloginComponent],
+  declarations: [UsersComponent, NewUserComponent,  NewInternComponent, NewProfessionalComponent, InternDashboardComponent,UserloginComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
