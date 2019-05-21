@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { map,tap } from 'rxjs/operators';
+import {Internship} from './internship.interface';
 import {Employee} from './model/employee';
 import {Region} from './model/region';
 import {Industry} from './model/industry';
@@ -11,6 +14,8 @@ export class InternshipService {
 employees: Employee[];
 regions: Region[];
 industries: Industry[];
+internship : Internship;
+// Apiurl = 'localhost:3000';
 Apiurl = 'https://node-rest-piemis.herokuapp.com';
 
   constructor(private httpclient: HttpClient) {
@@ -20,22 +25,70 @@ fileupload(formdata){
 	return this.httpclient.post(this.Apiurl+'/upload', body,
   {headers :new HttpHeaders({'Content-Type': 'application/json',
    'X-Requested-With': 'XMLHttpRequest'})});
-
-
 }
+
+
+regInternship(value){
+  const internshipPosition = value.internshipPosition; 
+  const description = value.description; 
+  const qualifications = value.qualifications; 
+  const subcategory = value.subcategory;
+  const tags = [value.tag1, value.tag2, value.tag3];
+  const body = JSON.stringify({internshipPosition,description,qualifications,subcategory,tags});
+  console.log("before api end point")
+  return this.httpclient.post(this.Apiurl+'/internships', body,
+  {headers :new HttpHeaders({'Content-Type': 'application/json',
+   'X-Requested-With': 'XMLHttpRequest'})})
+  .pipe(
+   map(
+      (res: Internship)=>{
+        this.internship = res;
+        console.log('in map operator');
+        return this.internship._id;})
+   )
+   .pipe(
+    tap(
+      regdata2=>{
+      localStorage.setItem('internship_id', this.internship._id);
+      console.log('localstorage');
+      }
+    ));
+    }
+    
+
+
 public getIndustries(){
 	return this.industries = [
-    {name:'Programming & tech', subcategory:['web programming','databases',
-    'desktop application', 'mobile application', 'ecommerce', 'security',
-    'data science & analysis','cms', 'server administration', 'Graphics & design']},
-    {name:'Businnes',  subcategory:['business tips', 'Markert research',
-    'Data entry', 'Legal consulting', 'Financial consulting', 'Career advice',
-    'Virtual assistant', 'accounts', 'other']},
-     {name:'Agriculture',subcategory:['']},
-     {name:'Arts', subcategory:['']},
-     {name:'Science', subcategory:['']},
-     {name:'Architecture & construction', subcategory:['']},
-     {name:'EDucation & Training', subcategory:['']}];
+    {name:'Computers & Technology', subcategory:['Web Programming','Database Management',
+    'Information Technology', 'Information Systems Development','mobile Development', 'Network Security', 'Network Administration',
+    'data analysis','Software Engineering', 'Server Administration', 'Computer Engineering',
+    'Information Systems Security']},
+    
+    {name:'Business & Management',  subcategory:['Accounting', 'Business administration',
+    'Economics', 'Entertainment Management', 'Finance', 'Forensic Accounting',
+    'Hotel & Restaurant Management', 'Human Resources', 'International Business', 
+    'Internet Business', 'Logistics', 'Organisational Leadership', 
+    'Project Management', 'Real Estate', 'Retail & Sales', 'Risk Management', 'Sports Management', 
+    'Supply Chain', 'Training & Development']},
+  
+     {name:'Education & Teaching', subcategory:['Online Teaching', 'Music Education', 
+     'Child Development', 'Early Childhood education', 'Special Teaching', 
+     'Language Teaching', 'Curiculum Teaching', 'Educational Administration', 'Coaching']},
+  
+     {name:'Arts & Design', subcategory:['Animation','Arts & History', 'Creative/Design', 'Fashion',
+     'Film', 'Game Design', 'Interior Design', 'Landscape Architecture', 'Multimedia Design', 
+     'Photography', 'Visual Communications', 'Web Design']},
+  
+     {name:'Health & Nursing', subcategory:['Public Health', 'Research', 'Nursing', 
+     'Health Education', 'Healthcare & Nutrition', 'Life-care management','Sports & Health',
+     'Psychology & Counseling']},
+  
+     {name:'Science & Engineering', subcategory:['Data science', 'Electronics Engineering', 
+     'Engineering Management', 'Environment Management', 'Environmental Science', 'Electical']},
+  
+     
+     {name:'Agriculture',subcategory:['Agribusiness', 'Fisheries', 'Animal Food', 
+     'Geneticist', 'Vetenary', 'Agricultural Management']},];
 }
 
 
