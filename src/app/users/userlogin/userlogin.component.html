@@ -1,0 +1,53 @@
+<nav class="ml-2">internship/personal info</nav>
+<br>
+<!-- <h4 *ngIf="error">{{error}}</h4> -->
+<div class="container-fluid " >
+<div class="row">
+  <!-- left section -->
+<div class="col-lg-3">
+</div>
+ <!-- middle section   -->
+<div class="col-lg-6">
+    <h2><strong>USER LOGIN</strong></h2>
+    <hr>
+<div class="card shadow">
+
+<div class="card-header text-center"
+style="background-color: #008d0d; color: #fff;">
+SIGN  IN
+</div>
+
+<form class="text-center border border-light p-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+  <div class="form-group">
+
+
+    <input type="email"  formControlName="email"
+    class="form-control mb-4" placeholder="email"[ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+               <div *ngIf="f.email.errors.required">Email is required</div>
+           </div>
+
+  </div>
+  <label for="password">Password</label>
+<div class="form-row ">
+  <div class="form-group col-md-12">
+    <input id="password" type={{this.type}} formControlName="password"
+    class="form-control"  placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+               <div *ngIf="f.password.errors.required">Password is required</div>
+           </div>
+  </div>
+
+</div>
+  <button class="btn btn-success btn-block btn-sm "
+  style="background-color: #008d0d;" type="submit"
+  >SIGN IN
+  </button>
+
+
+</form>
+</div>
+</div>
+
+</div>
+</div>

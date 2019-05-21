@@ -11,6 +11,7 @@ import {User} from './user.interface';
 })
 export class UserService {
   user: User;
+  token:string;
   personalForm:boolean;
   companyForm:boolean;
   complete:boolean;
@@ -32,18 +33,21 @@ export class UserService {
     return this.httpclient.post(this.Apiurl+ '/users/', body,
       {headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})
     })
+    .pipe(
+     map(
+        (res: User)=>{
+            this.user = res;
+          return this.user._id;})
+     )
+     .pipe(
+      tap(
+        regdata=>{
+        localStorage.setItem('token', this.user._id);
+        }
+      ));
   }
 
-  logUser(email: string, password: string,  role: string)
-  {
-    const body = JSON.stringify({email, password, role});
-    console.log(body);
 
-    return this.httpclient.post(this.Apiurl+ '/users/', body,
-      {headers :new HttpHeaders({'Content-Type': 'application/json',
-       'X-Requested-With': 'XMLHttpRequest'})
-    });
-}
 
 
 regProfessional(
@@ -68,7 +72,7 @@ regProfessional(
    .pipe(
     tap(
       regdata=>{
-      localStorage.setItem('user_id', this.user._id);
+      localStorage.setItem('token', this.user._id);
       }
     ));
   }

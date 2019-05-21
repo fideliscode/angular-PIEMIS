@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/user.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-new-intern',
@@ -11,6 +12,7 @@ export class NewInternComponent implements OnInit {
 newinternForm: FormGroup;
 hide: string;
 type: string;
+
   constructor(public userService: UserService) {
     this.hide= 'show';
     this.type= 'password';}
@@ -46,7 +48,8 @@ type: string;
       'intern').subscribe(response => {
       alert('account created');
       this.newinternForm.reset();
-      console.log(response)},
+      console.log(response)
+  },
       err => {console.error(err);})
 
   }
