@@ -25,14 +25,14 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: function  tokenGetter() {
-             return     localStorage.getItem('token');},
-        whitelistedDomains: ['localhost:4200'],
-      //  blacklistedRoutes: ['http://localhost:4200/users']
-      }
-    })
+    //JwtModule.forRoot({
+    //  config: {
+    //    tokenGetter: function  tokenGetter() {
+        //     return     localStorage.getItem('token');},
+      //  whitelistedDomains: ['localhost:4200'],
+    //  //  blacklistedRoutes: ['http://localhost:4200/users']
+    //  }
+  //  })
   ],
   providers: [
     AuthGuard,
