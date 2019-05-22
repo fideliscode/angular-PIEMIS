@@ -24,7 +24,7 @@ export class AuthService {
       return this.httpClient.post(this.Apiurl+ '/users/login', body ,{headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})})
       .pipe(
        map(
-          (res:any)=>{
+          (res:{string})=>{
             console.log('just entered map!');
               this.message = res.message;
               this.user = res.user;
