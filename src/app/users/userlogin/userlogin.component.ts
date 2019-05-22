@@ -17,11 +17,14 @@ import {User} from 'src/app/user.interface';
 export class UserloginComponent implements OnInit {
 loginForm: FormGroup;
 submitted = false;
-  user: User;
+message = '';
+user: User;
  
   type:string;
   constructor(private authService: AuthService, private formBuilder: FormBuilder,  private route: ActivatedRoute,
-        private router: Router) {this.type= 'password';
+        private router: Router) {
+          this.type= 'password';
+          this.message ='';
     }
 
   ngOnInit() {
@@ -30,18 +33,15 @@ submitted = false;
             password: ['', Validators.required]
         });
         // reset login status
-              this.authService.logout();
-
-
-
+         this.authService.logout();
   }
 
   // convenience getter for easy access to form fields
-      get f() { return this.loginForm.controls; }
+      get f() {
+         return this.loginForm.controls; }
 
   onSubmit() {
     this.submitted= true;
-
     // stop here if form is invalid
         if (this.loginForm.invalid) {
             this.router.navigate(['users/login']);
@@ -49,9 +49,26 @@ submitted = false;
         else{
            this.authService.login(this.f.email.value, this.f.password.value)
            .subscribe(
-           (response)=>{alert(response.message);},
+           (response)=>{
+            this.message = response.message;
+            const role = response.user[0].role;
+            
+            if(role == 'professional'){
+              
+              this.router.navigate(['internships/new-internship']);
+              console.log('i am a professional');
+            }if (role == 'intern') {
+              this.router.navigate(['users/intern-dashboard']);
+            } 
+            else {
+              
+            }
+             },
            (err)=> {alert(err.message);},
-           ()=>{alert('Logged in!');}
+           ()=>{
+            this.loginForm.reset();
+             this.router.navigate(['users/login']);
+           }
            );
         }
   }

@@ -1,52 +1,67 @@
-<nav class="ml-2">internship/personal info</nav>
-<br>
-<div class="container-fluid " >
+<div class="container-fluid mb-4" >
 <div class="row">
   <!-- left section -->
-<div class="col-lg-3">
+<div class="col-lg-3 col-md-3">
 </div>
  <!-- middle section   -->
-<div class="col-lg-6">
-    <h2><strong>INTERN REGISTRATION</strong></h2>
+<div class="col-lg-6 col-md-6">
+    <h4>Intern Registration</h4>
     <hr>
-<div class="card shadow">
+<div class="card">
 
 <div class="card-header text-center"
 style="background-color: #008d0d; color: #fff;">
-PERSONAL INFORMATION
+Personal Information
 </div>
-<form class="text-center border border-light p-5" [formGroup]="newinternForm" (ngSubmit)="onSubmit()" >
-  <div class="form-group">
-    <input type="text" formControlName="fname"
-    class="form-control mb-4" placeholder="First Name">
-
-    <input type="text"  formControlName="lname"
-    class="form-control mb-4" placeholder="Last Name">
-
-    <input type="email"  formControlName="email"
-    class="form-control mb-4" placeholder="email">
-
-    <input type="tel"  formControlName="phone"
-    class="form-control mb-4" placeholder="Phone Number">
+<form class="border border-light p-5" [formGroup]="newinternForm" (ngSubmit)="onSubmit()" >
+  <div class="form-row">
+      <div class="form-group col-md-6">
+          <label for="fname">First Name</label>
+          <input type="text" formControlName="fname"
+          class="form-control mb-4" placeholder="First Name">
+        </div>
+      
+      <div class="form-group col-md-6">
+        <label for="lname">Last Name</label>
+          <input type="text"  formControlName="lname"
+          class="form-control mb-4" placeholder="Last Name">
+      </div>
+      
   </div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="lname"email>Email</label>
+        <input type="email"  formControlName="email"
+        class="form-control mb-4" placeholder="Email">
+    </div>
+     
+    <div class="form-group col-md-6 ">
+        <label for="phone"email>Phone Number</label>
+        <input type="tel"  formControlName="phone"
+        class="form-control mb-4" placeholder="Phone Number">
+      </div>
+</div>
+
+
   <label for="password">Password</label>
 <div class="form-row ">
   <div class="form-group col-md-10">
-    <input id="password" type={{this.type}} formControlName="password"
+      
+    <input id="password" type={{this.type}} formControlName="Password"
     class="form-control"  placeholder="Password"  >
   </div>
   <div class="form-group col-md-2">
     <button class="btn btn-success" (click)="toggle()">{{this.hide}}</button>
   </div>
 </div>
-  <button class="btn btn-success btn-block btn-sm "
+  <button class="btn btn-success btn-block "
   style="background-color: #008d0d;" type="submit"
-  [disabled]="!newinternForm.valid">Sign up for free
+  [disabled]="!newinternForm.valid">Sign Up
   </button>
-
 </form>
 </div>
 </div>
-
+<div class="col-lg-3 col-md-3">
+  </div>
 </div>
 </div>

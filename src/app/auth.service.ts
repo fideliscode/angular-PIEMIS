@@ -25,11 +25,11 @@ export class AuthService {
       .pipe(
        map(
           (res: any)=>{
-            console.log('just entered map!');
+           
               this.message = res.message;
               this.user = res.user;
               this.token = res.token;
-              console.log('done kwa map');
+            
             return {token:this.token,user:this.user,message:this.message}
           })
        )
@@ -38,9 +38,9 @@ export class AuthService {
           
           loginData=>{
           localStorage.setItem('token', loginData.token);
-          localStorage.setItem('userid', loginData.user._id);
-          localStorage.setItem('role', loginData.user.role);
-          console.log('nimeweka kwa localStorage');
+          localStorage.setItem('userid', loginData.user[0]._id);
+          localStorage.setItem('role', loginData.user[0].role);
+          
           }
         ));
 
