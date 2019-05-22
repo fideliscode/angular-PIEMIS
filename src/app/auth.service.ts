@@ -18,13 +18,13 @@ export class AuthService {
    Apiurl = 'https://node-rest-piemis.herokuapp.com';
     constructor(private httpClient: HttpClient,private router: Router) { }
 
-    login(email: string, password: string){
+    login(email: string, password: string):Observable<any>{
       const body = JSON.stringify({email, password});
       console.log(body);
       return this.httpClient.post(this.Apiurl+ '/users/login', body ,{headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})})
       .pipe(
        map(
-          (res:{string})=>{
+          (res: any)=>{
             console.log('just entered map!');
               this.message = res.message;
               this.user = res.user;
