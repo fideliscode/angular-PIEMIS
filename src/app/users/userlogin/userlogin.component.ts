@@ -18,7 +18,7 @@ export class UserloginComponent implements OnInit {
 loginForm: FormGroup;
 submitted = false;
   user: User;
-  token:string;
+ 
   type:string;
   constructor(private authService: AuthService, private formBuilder: FormBuilder,  private route: ActivatedRoute,
         private router: Router) {this.type= 'password';
@@ -46,23 +46,13 @@ submitted = false;
         if (this.loginForm.invalid) {
             this.router.navigate(['users/login']);
         }
-
-
-              this.authService.login(this.f.email.value, this.f.password.value)
-                  .subscribe(
-                    (res)=>{
-                      alert(res.message);
-                    }
-                      // response=> {
-                      //   alert('Logged In');
-                      //  localStorage.setItem('token', this.token)
-                      //     this.router.navigate(['/home']);
-                      //     console.log(response)
-                    //  },
-                     ,(error )=> {
-                         alert('error');
-
-                     }
-                    );
+        else{
+           this.authService.login(this.f.email.value, this.f.password.value)
+           .subscribe(
+           (response)=>{alert(response.message);},
+           (err)=> {alert(err.message);},
+           ()=>{alert('Logged in!');}
+           );
+        }
   }
 }
