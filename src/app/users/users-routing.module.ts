@@ -6,6 +6,7 @@ import { NewInternComponent} from './new-intern/new-intern.component';
 import { NewProfessionalComponent} from './new-professional/new-professional.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { InternDashboardComponent } from './intern-dashboard/intern-dashboard.component';
+import { ProfessionalDashboardComponent } from './professional-dashboard/professional-dashboard.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'new-professional', component: NewProfessionalComponent},
   {path: 'login', component:UserloginComponent},
   {path: 'intern-dashboard', component:InternDashboardComponent},
+  {path: 'professional-dashboard', component:ProfessionalDashboardComponent}
 
 
 

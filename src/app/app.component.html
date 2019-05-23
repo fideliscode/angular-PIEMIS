@@ -82,13 +82,13 @@ font-family:-apple-system,
 </div>
 
 <hr>
-<footer class="mb-0 ml-0 mr-0 mt-4" style="text-align:center; background-color: #6177771c;">
+<footer class="mb-0 ml-0 mr-0 mt-4" style="text-align:center; background-color: #1a2029;">
  <div class="container-fluid">
     <div class="row"> 
       <div class="col-lg-4 text-left mt-4">
-        <h6>Categories</h6>
+        <h6 style="color: blanchedalmond">Categories</h6>
             <div *ngFor="let category of internshipService.getIndustries(); let i=index" >
-               <a class="text-muted" style="color:#212529;" href="#"   >
+               <a class="text-muted" style="color: blanchedalmond;" href="#"   >
                   {{category.name}}
                 </a>
               </div>
@@ -100,7 +100,7 @@ font-family:-apple-system,
         <div class="col-md-12 text-muted">
           <br>
             © 2019 Copyright | All rights reserved.
-            <a style="color:#212529;" href="https://angular-piemis.herokuapp.com/">
+            <a style="color:blanchedalmond;" href="https://angular-piemis.herokuapp.com/">
               Uni-Intern.com</a>
         </div>
   

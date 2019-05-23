@@ -8,11 +8,12 @@ import { NewInternComponent } from './new-intern/new-intern.component';
 import { NewProfessionalComponent } from './new-professional/new-professional.component';
 import { InternDashboardComponent } from './intern-dashboard/intern-dashboard.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
+import { ProfessionalDashboardComponent } from './professional-dashboard/professional-dashboard.component';
 
 
 
 @NgModule({
-  declarations: [UsersComponent, NewUserComponent,  NewInternComponent, NewProfessionalComponent, InternDashboardComponent,UserloginComponent],
+  declarations: [UsersComponent, NewUserComponent,  NewInternComponent, NewProfessionalComponent, InternDashboardComponent,UserloginComponent, ProfessionalDashboardComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
