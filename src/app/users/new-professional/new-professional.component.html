@@ -8,20 +8,20 @@
 
     <div class="collapse navbar-collapse  " id="navbarSupportedContent">
 
-          <ul class="navbar-nav mx-5 " style="padding-left:50px;" >
+          <ul class="navbar-nav mx-5 mr-4 " style="padding-left:50px;" >
               <li class="nav-item px-5" >
-                <a class="nav-link" [routerLink]= "['/internships/new-internship']"><strong>INTERNSHIPS</strong></a>
+                <a class="nav-link" [routerLink]= "['/internships/new-internship']"><strong>Internships</strong></a>
               </li>
               <li class="nav-item px-5">
-                <a class="nav-link" href="#"><strong>INTERN POOLS</strong></a>
+                <a class="nav-link" href="#"><strong>Intern Pools</strong></a>
               </li>
               <li class="nav-item px-5">
-                  <a class="nav-link" href="#"> <strong>ACCOUNT SETTING</strong> </a>
-              </li>
+                <a class="nav-link" href="#"> <strong>Products</strong> </a>
+            </li>
               <li class="nav-item px-5">
-                  <a class="nav-link" href="#"> <strong>PRODUCTS</strong> </a>
+                  <a class="nav-link" href="#"> <strong>My Account</strong> </a>
               </li>
-
+            
 
             </ul>
     </div>
@@ -93,12 +93,12 @@
                                       <input id="password" type={{this.type}} formControlName="password"
                                       class="form-control"  placeholder="Password"  >
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-2 mr-0">
                                       <button class="btn btn-success" (click)="toggle()">{{this.hide}}</button>
                                     </div>
                                 </div>
 
-                                  <button class="btn btn-success btn-block btn-sm "
+                                  <button class="btn btn-success btn-block"
                                   style="background-color: #008d0d;" type="submit"
                                   [disabled]="!personalForm.valid">Sign Up
                                   </button>
@@ -146,7 +146,7 @@
                             </select>
                            </div>
                           </div>
-                          <button class="btn btn-success btn-sm "
+                          <button class="btn btn-success btn-block "
                           style="background-color: #008d0d;" type="submit"
                           [disabled]="!companyForm.valid">Next
                           </button>

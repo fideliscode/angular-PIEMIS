@@ -1,9 +1,9 @@
 <br>
-<div class="container-fluid">
+<div class="container-fluid mb-4">
     <div class="row mt-3">
         <div class="col-lg-3 col-md-3"></div>
         <div class="col-lg-6 col-md-6">
-          <h4>INTERNSHIP REGISTRATION</h4>
+          <h4><strong>Internship Registration</strong></h4>
             <hr>
     <div class="card">
     <div class = "alert alert-success alert-dismissable" *ngIf = "userService.getcomplete()"  >
@@ -13,8 +13,8 @@
       Successfully submitted! One more to go.
     </div>
     <div class="card-header text-center"
-    style="background-color: #008d0d; color: #fff;" >
-    Internship Details
+    style="background-color: #008d0d; color: #fff;" ><h4><strong>Internship Details</strong></h4> 
+    
     </div>
     <form  class=" border border-light p-5" [formGroup]="internshipForm"
     (ngSubmit)="oncreateInternship()">
@@ -73,21 +73,26 @@
               </div>
              <div class="form-row">
               <div class="form-group col-md-12 text-center">
-                 <p class="help-block">Tags are helpful in fast searching</p>
+                 <p class="text-muted">Tags are helpful for fast searching</p>
               </div>
                 
               </div>
                   
               
 
- 
-            <div class="form-group">
-              <button class="btn btn-success shadow"
-              type="submit"
-              [disabled]="!internshipForm.valid"   >Save
-              </button>
-            </div>
-          
+ <div class="form-row">
+  <div class="form-group col-md-3"></div>
+  <div class="form-group col-md-6">
+    <button class="btn btn-success btn-block shadow"
+    type="submit"
+    [disabled]="!internshipForm.valid">Save
+    </button>
+  </div>
+  <div class="form-group col-md-3"></div>
+   
+  
+ </div>
+    
     </form>
             </div>
 
