@@ -23,7 +23,7 @@ font-family:-apple-system,
         > <strong>Home</strong><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]= "['/internships/new-internship']" style="color:rgb(5, 9, 12);">Offer Internship</a>
+        <a class="nav-link" href="#" [routerLink]= "['/users/professional-dashboard']" style="color:rgb(5, 9, 12);">Offer Internship</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"  [routerLink]= "['/users/login']" style="color:rgb(5, 9, 12);">Sign in</a>
@@ -83,33 +83,7 @@ font-family:-apple-system,
 </div>
 </div>
 <hr>
-<footer class="mb-0 ml-0 mr-0 mt-4" style="text-align:center; background-color:#172431">
- <div class="container-fluid">
-    <div class="row"> 
-      <div class="col-lg-4 text-left mt-4">
-        <h6 style="color: blanchedalmond">Categories</h6>
-            <div *ngFor="let category of internshipService.getIndustries(); let i=index" >
-               <a class="text-muted" style="color: blanchedalmond;" href="#"   >
-                  {{category.name}}
-                </a>
-              </div>
-      </div>
-      <div class="col-lg-4 mt-4"></div>
-      <div class="col-lg-4 mt-4"></div>
-    </div>
-      <div class="row">
-        <div class="col-md-12 text-muted">
-          <br>
-            © 2019 Copyright | All rights reserved.
-            <a style="color:blanchedalmond;" href="https://angular-piemis.herokuapp.com/">
-              Uni-Intern.com</a>
-        </div>
-  
-      </div>
- </div>
- 
-  <br>
-</footer>
+
 
    
   

@@ -6,9 +6,10 @@ import { InternshipsComponent } from './internships/internships.component';
 import { InternshipComponent } from './internship/internship.component';
 import { NewInternshipComponent } from './new-internship/new-internship.component';
 import {HttpClientModule} from '@angular/common/http';
+import { FooterComponent } from '../footer/footer.component';
 
 @NgModule({
-  declarations: [InternshipsComponent, InternshipComponent, NewInternshipComponent],
+  declarations: [InternshipsComponent, InternshipComponent, NewInternshipComponent,FooterComponent],
   imports: [
     CommonModule,
     InternshipsRoutingModule,

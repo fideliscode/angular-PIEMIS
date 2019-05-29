@@ -10,6 +10,7 @@ import { InternDashboardComponent } from './intern-dashboard/intern-dashboard.co
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { ProfessionalDashboardComponent } from './professional-dashboard/professional-dashboard.component';
 import { NewInternshipComponent } from '../internships/new-internship/new-internship.component';
+import {FooterComponent} from '../footer/footer.component';
 
 
 
@@ -17,7 +18,7 @@ import { NewInternshipComponent } from '../internships/new-internship/new-intern
   declarations: [UsersComponent, NewUserComponent,  
     NewInternComponent, NewProfessionalComponent, InternDashboardComponent,
     UserloginComponent,
-    ProfessionalDashboardComponent,NewInternshipComponent],
+    ProfessionalDashboardComponent,NewInternshipComponent,FooterComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,

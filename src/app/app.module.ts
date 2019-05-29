@@ -10,6 +10,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from 'src/app/auth.service';
 import { AuthGuard } from './auth.guard';
 import { CommonModule } from '@angular/common';
+// import { FooterComponent } from './footer/footer.component';
 
 
 export function tokenGetter() {
@@ -21,7 +22,8 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    // FooterComponent
   
   ],
   imports: [
