@@ -25,8 +25,12 @@ user: User;
         private router: Router) {
           this.type= 'password';
           this.message ='';
+          
+         
+          
     }
 
+ 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
@@ -39,12 +43,12 @@ user: User;
   // convenience getter for easy access to form fields
       get f() {
          return this.loginForm.controls; }
-
+    
   onSubmit() {
     this.submitted= true;
     // stop here if form is invalid
         if (this.loginForm.invalid) {
-            this.router.navigate(['users/login']);
+            this.router.navigate(['/users/login']);
         }
         else{
            this.authService.login(this.f.email.value, this.f.password.value)
@@ -54,21 +58,23 @@ user: User;
             const role = response.user[0].role;
             
             if(role == 'professional'){
-              
+              console.log(this.message);
+              this.loginForm.reset();
               this.router.navigate(['internships/new-internship']);
-              console.log('i am a professional');
+              
             }if (role == 'intern') {
+              this.loginForm.reset();
               this.router.navigate(['users/intern-dashboard']);
             } 
             else {
-              
+              console.log(this.message);
             }
              },
-           (err)=> {alert(err.message);},
-           ()=>{
-            this.loginForm.reset();
-             this.router.navigate(['users/login']);
-           }
+           (err)=> {console.log(this.message)}
+          //  ()=>{
+          //   this.loginForm.reset();
+          //   this.router.navigate(['internships/new-internship']);
+          //  }
            );
         }
   }

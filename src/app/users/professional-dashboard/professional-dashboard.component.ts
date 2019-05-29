@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {NewInternshipComponent} 
+from 'src/app/internships/new-internship/new-internship.component';
+import { from } from 'rxjs';
+
 
 @Component({
   selector: 'app-professional-dashboard',

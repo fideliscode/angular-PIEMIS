@@ -18,6 +18,8 @@ const routes: Routes = [
   {path: 'login', component:UserloginComponent},
   {path: 'intern-dashboard', component:InternDashboardComponent},
   {path: 'professional-dashboard', component:ProfessionalDashboardComponent}
+ 
+
 
 
 

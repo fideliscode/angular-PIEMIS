@@ -4,9 +4,6 @@ import { UserService } from 'src/app/user.service';
 import {User} from 'src/app/user.interface';
 import {InternshipService} from 'src/app/internship.service';
 
-
-
-
 @Component({
   selector: 'app-new-professional',
   templateUrl: './new-professional.component.html',

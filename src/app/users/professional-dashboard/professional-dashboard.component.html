@@ -1,13 +1,80 @@
-<div id="sidebar">
-<div class="toggle">
-  <span></span>
-  <span></span>
-  <span></span>
+<div class="row mb-4">
+  <div class="col-md-2 mb-3">
+
+<div class="list-group" id="myList" role="tablist" style="height: 100%;color: black;">
+  <a class="list-group-item" style="background-color: #384248;"  href="#home" role="tab">
+    <span class="menu"></span>
+    <span class="menu"></span>
+    <span class="menu"></span>
+  </a>
+  <a class="list-group-item list-group-item-action active " data-toggle="list" href="#profile" role="tab">ACCOUNT</a>
+  <a class="list-group-item list-group-item-action " data-toggle="list" href="#messages" role="tab">INTERNS POOL</a>
+  <a class="list-group-item list-group-item-action " data-toggle="list" href="#messages" role="tab">INTERNSHIPS</a>
+  <a class="list-group-item list-group-item-action " data-toggle="list"
+   href="#settings" role="tab">PRODUCTS</a>
+   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+   data-toggle="list"
+   href="#notifications" role="tab">
+      Notifications
+      <span class="badge badge-primary badge-pill">2</span>
+   </a>
 </div>
-<ul>
-  <li>Products</li>
-  <li>Intern Pools</li>
-  <li>Notifications</li>
-  <li>Settings</li>
-</ul>
+</div>
+
+<div class="col-md-10">
+    <div class="row mb-3">
+      <div class="col-md-9">
+          <form class="form-inline ml-auto">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><strong>Find</strong> </span>
+                </div>
+              <input type="text" class="form-control mr-sm-2 mb-2" placeholder="Skills,Keywords">
+              <input type="text" class="form-control mr-sm-2 mb-2" placeholder="Place, Institution">
+              <button type="submit" class="btn btn-outline-light mb-2">Search</button>
+             
+          </form>
+      </div>
+      <div class="col-md-3">
+          <button type="submit" [routerLink]= "['/internships/new-internship']"class="btn btn-outline-light btn-block mb-2"><span><strong>+</strong></span> Create Internship</button>
+      </div>
+    </div>
+  <div class="row mb-3">
+      <div class="col-md-9" style="margin-right: 0px;">
+             
+              <app-new-internship ></app-new-internship>
+          
+        </div>
+        <div class="col-md-3">
+            <div class="card border-secondary mb-3" style="max-width: 100%;">
+                <div class="btn btn-default" style="border-radius: 0px;">Interns</div>
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="assets/img/auditor.jpeg" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="assets/img/content manager.png" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="assets/img/photographer.jpeg" alt="Third slide">
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card border-secondary mb-3" style="max-width: 100%;">
+            <div class="card-header">Header</div>
+            <div class="card-body text-secondary">
+              <h5 class="card-title">Secondary card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+
 </div>

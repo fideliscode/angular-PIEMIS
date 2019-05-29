@@ -9,15 +9,20 @@ import { NewProfessionalComponent } from './new-professional/new-professional.co
 import { InternDashboardComponent } from './intern-dashboard/intern-dashboard.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { ProfessionalDashboardComponent } from './professional-dashboard/professional-dashboard.component';
+import { NewInternshipComponent } from '../internships/new-internship/new-internship.component';
 
 
 
 @NgModule({
-  declarations: [UsersComponent, NewUserComponent,  NewInternComponent, NewProfessionalComponent, InternDashboardComponent,UserloginComponent, ProfessionalDashboardComponent],
+  declarations: [UsersComponent, NewUserComponent,  
+    NewInternComponent, NewProfessionalComponent, InternDashboardComponent,
+    UserloginComponent,
+    ProfessionalDashboardComponent,NewInternshipComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
-    ReactiveFormsModule,FormsModule
+    ReactiveFormsModule,FormsModule,
+   
   ]
 })
 export class UsersModule { }

@@ -1,4 +1,6 @@
+
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +9,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from 'src/app/auth.service';
 import { AuthGuard } from './auth.guard';
+import { CommonModule } from '@angular/common';
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -17,22 +21,15 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-
-
+    HomeComponent
+  
   ],
   imports: [
-    BrowserModule,
+  
     AppRoutingModule,
-    HttpClientModule,
-    //JwtModule.forRoot({
-    //  config: {
-    //    tokenGetter: function  tokenGetter() {
-        //     return     localStorage.getItem('token');},
-      //  whitelistedDomains: ['localhost:4200'],
-    //  //  blacklistedRoutes: ['http://localhost:4200/users']
-    //  }
-  //  })
+    HttpClientModule,BrowserModule
+  
+  
   ],
   providers: [
     AuthGuard,
