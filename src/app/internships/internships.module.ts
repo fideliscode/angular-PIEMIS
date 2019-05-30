@@ -5,16 +5,16 @@ import { InternshipsRoutingModule } from './internships-routing.module';
 import { InternshipsComponent } from './internships/internships.component';
 import { InternshipComponent } from './internship/internship.component';
 import { NewInternshipComponent } from './new-internship/new-internship.component';
-import {HttpClientModule} from '@angular/common/http';
-import { FooterComponent } from '../footer/footer.component';
+import { HttpClientModule} from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [InternshipsComponent, InternshipComponent, NewInternshipComponent,FooterComponent],
+  declarations: [InternshipsComponent, InternshipComponent, NewInternshipComponent],
   imports: [
     CommonModule,
     InternshipsRoutingModule,
     ReactiveFormsModule,FormsModule,
-    HttpClientModule
+    HttpClientModule,SharedModule
   ]
 })
 export class InternshipsModule { }

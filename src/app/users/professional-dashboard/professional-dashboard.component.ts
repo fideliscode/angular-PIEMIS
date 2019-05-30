@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NewInternshipComponent} 
-from 'src/app/internships/new-internship/new-internship.component';
+import { FormControl, FormGroup } from '@angular/forms';
 import { from } from 'rxjs';
 
 

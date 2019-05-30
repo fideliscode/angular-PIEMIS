@@ -10,7 +10,6 @@
     </div>
     <div class="card-header text-center"
     style="background-color: #008d0d; color: #fff;" >Internship Details 
-    
     </div>
     <form  class=" border border-light p-5" [formGroup]="internshipForm"
     (ngSubmit)="oncreateInternship()">
@@ -34,9 +33,7 @@
                     </select>
                   </div>
                 </div>
-
-
-                <div class="form-group shadow-textarea">
+               <div class="form-group shadow-textarea">
                   <label for="intfunc">Internship Activities</label>
                   <textarea id="intfunc" class="form-control " formControlName="description"
                   rows="3" placeholder="Intern will be responsible for..."></textarea>
