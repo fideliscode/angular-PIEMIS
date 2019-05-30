@@ -4,12 +4,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InternshipsRoutingModule } from './internships-routing.module';
 import { InternshipsComponent } from './internships/internships.component';
 import { InternshipComponent } from './internship/internship.component';
-import { NewInternshipComponent } from './new-internship/new-internship.component';
 import { HttpClientModule} from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [InternshipsComponent, InternshipComponent, NewInternshipComponent],
+  declarations: [InternshipsComponent, InternshipComponent],
   imports: [
     CommonModule,
     InternshipsRoutingModule,
