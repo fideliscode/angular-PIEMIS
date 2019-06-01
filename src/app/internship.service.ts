@@ -55,6 +55,14 @@ regInternship(value){
     ));
     }
     
+    getInternships(){
+      return this.httpclient.get(this.Apiurl+'/internships')
+      .pipe(
+        map((res: Internship[])=>{
+          return res;
+        })
+      );
+    }
 
 
 public getIndustries(){

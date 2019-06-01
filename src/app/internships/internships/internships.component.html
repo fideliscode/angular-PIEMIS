@@ -1,3 +1,6 @@
-<p>
-  internships works!
-</p>
+<div class="container-fluid">
+	<h3> <strong>Popular Internships</strong></h3><br><div class="card-deck ">
+<app-internship *ngFor = "let internship of internships" [singleInternship]= "internship">
+</app-internship>
+      </div>
+</div>

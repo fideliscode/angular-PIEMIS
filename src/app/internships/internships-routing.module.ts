@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InternshipsComponent } from './internships/internships.component';
 import { NewInternshipComponent } from './new-internship/new-internship.component';
+
 const routes: Routes = [
   {path: '', component: InternshipsComponent},
-  {path: 'new-internship', component: NewInternshipComponent}
+  {path: 'new-internship', component: NewInternshipComponent},
+  {path: 'internships', component:InternshipsComponent}
 ];
 
 @NgModule({
