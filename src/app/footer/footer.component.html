@@ -1,10 +1,21 @@
-<footer class="mb-0 ml-0 mr-0 mt-4" style="text-align:center; background-color:#172431">
+ <div class="container-fluid bg-light mb-0 text-center">
+      <div class="d-flex justify-content-around mb-2">  <!--d-flex is used to align elements-->
+        <button class="btn btn-outline-dark btn-sm " disabled="true" ><img  src="assets/img/y4c_opt.jpg" >
+        </button>
+        <button class="btn btn-outline-dark btn-sm " disabled="true" ><img  src="assets/img/udsm_opt.png"></button>
+        <button class="btn btn-outline-dark btn-sm " disabled="true"><img  src="assets/img/unicef2_opt.png"></button>
+      </div>
+   </div>
+<footer class="mb-0 ml-0 mr-0 mt-1" style="text-align:center; background-color:#172431">
+   
+
+
   <div class="container-fluid">
      <div class="row"> 
        <div class="col-lg-4 text-left mt-4">
-         <h6 style="color: blanchedalmond">Categories</h6>
+         <h5 class = "text-muted" style="color: #bbc0c4;">Categories</h5>
              <div *ngFor="let category of internshipService.getIndustries(); let i=index" >
-                <a class="text-muted" style="color: blanchedalmond;" href="#"   >
+                <a class="text-muted" style="color: blanchedalmond;text-decoration: none" href="#"   >
                    {{category.name}}
                  </a>
                </div>
@@ -13,11 +24,16 @@
        <div class="col-lg-4 mt-4"></div>
      </div>
        <div class="row">
-         <div class="col-md-12 text-muted">
+         <div class="col-md-9 text-muted">
            <br>
              © 2019 Copyright | All rights reserved.
              <a style="color:blanchedalmond;" href="https://angular-piemis.herokuapp.com/">
                Uni-Intern.com</a>
+         </div>
+         <div class="col-md-3 text-muted">
+          <br>
+           Terms | Privacy Policy
+
          </div>
    
        </div>

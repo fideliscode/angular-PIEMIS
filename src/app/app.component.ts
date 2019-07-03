@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import {InternshipService} from './internship.service';
-
+import { InternshipService} from './internship.service';
+import { AuthService} from './auth.service';
+import { UserService} from './user.service';
+import { Router} from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +11,8 @@ import {InternshipService} from './internship.service';
 export class AppComponent {
 	
 	position = 'center';
-	constructor(public internshipService: InternshipService){
+	constructor(public internshipService: InternshipService, private router:Router,
+    private authService: AuthService, private userService: UserService){
 		
 		this.position='center';
 	}
@@ -21,5 +24,9 @@ export class AppComponent {
   	}else{
   		this.position = "center";
   	}
+  }
+  Logout(){
+    return this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

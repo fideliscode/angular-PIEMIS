@@ -1,8 +1,15 @@
-  <div class="card bg-light mb-2">
-          <img class="card-img-top " src="assets/img/content manager.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{singleInternship.internshipPosition}}</h5>
-            <p class="card-text">{{singleInternship.professional.company.companyName}}</p>
-            <p class="card-text"><small class="text-muted">{{singleInternship.updatedAt}}</small></p>
+<a (click)="onView()" class="card-block clearfix" >
+  <div class="card mt-2 ml-0" role="button"   style="font-size: 15px;">
+    <img class="card-img-top" style="width:230px;background-color:honeydew ;height:150px;" src= "http://localhost:3000/{{internship.internshipfile}}" alt="Card image cap">
+        <div class="card-body mb-1">
+          <p class="card-title mb-1">{{internship.internshipPosition |  titlecase}}</p>
+          <p class="text-muted mb-1"> {{internship.vacancy}} Vacancies</p>
+            <small class="card-text mb-1"><span style="color: black;">At</span> {{internship.professional.company.companyName |  titlecase}}</small>
+        
+         </div>
+          <div class="card-footer bg-light" >
+              <small class="text-muted" style="color: black;">Last updated 
+             {{internship.updatedAt | timeAgo}}</small>
           </div>
-        </div>
+  </div>
+</a>

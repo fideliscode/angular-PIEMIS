@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style=" background-color:#fff;
 font-family:-apple-system,
  BlinkMacSystemFont, 'Segoe UI',
@@ -8,35 +6,61 @@ font-family:-apple-system,
 
     <a class="navbar-brand" href="#" ><img src="assets/img/brandlogo.jpg" style="height:42px;"></a>
 
-    <a class="navbar-brand" href="#" ><h2><span style="color:#008d0d;"><strong>Uni-</strong></span>Intern</h2></a>
+    <a class="navbar-brand " href="#" ><h2><span style="color:#008d0d;"><strong>Uni-</strong></span>Intern</h2></a>
 
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler shadow" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#" style="color:rgb(5, 9, 12);"
-        > <strong>Home</strong><span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]= "['/']" style="color:rgb(5, 9, 12);"
+        ><h5> Home</h5></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]= "['/users/professional-dashboard']" style="color:rgb(5, 9, 12);">Offer Internship</a>
+        <a class="nav-link" href="#" [routerLink]= "['/users/professional-dashboard']" 
+        *ngIf="!this.authService.Authenticated()"
+        style="color:rgb(5, 9, 12);"><h5>Offer Internship</h5></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"  [routerLink]= "['/users/login']" style="color:rgb(5, 9, 12);">Sign in</a>
+<!-- visible only by autheticated professional -->
+         <li class="nav-item" 
+         *ngIf="this.authService.Authenticated && (this.authService.getRole() == 'professional')">
+        <a class="nav-link"  [routerLink]= "['/users/professional-dashboard']" 
+        
+        style="color:rgb(5, 9, 12);"><h5>My Dashboard</h5></a>
       </li>
-      <li class="nav-item">
+<!--  -->
+
+<!-- visible only by autheticated intern -->
+         <li class="nav-item" 
+         *ngIf="this.authService.Authenticated && (this.authService.getRole() == 'intern')">
+        <a class="nav-link"  [routerLink]= "['/users/intern-dashboard']" 
+        
+        style="color:rgb(5, 9, 12);"><h5>My Dashboard</h5></a>
+      </li>
+<!--  -->
+      <li class="nav-item" *ngIf="!this.authService.Authenticated()">
+        <a class="nav-link"   [routerLink]= "['/users/login']" style="color:rgb(5, 9, 12);"><h5>Sign in</h5></a>
+      </li>
+
+      <li class="nav-item " *ngIf="this.authService.Authenticated()">
+        <button class="nav-link btn btn-sm"  (click)="Logout()" style="color:rgb(5, 9, 12);"><h5>Log out</h5></button>
+      </li>
+
+    
+      <li class="nav-item " *ngIf="!this.authService.Authenticated()">
       <button type="button"
-        class="btn btn-outline-success nav-link"
+        class="btn btn-outline-dark nav-link"
         [routerLink]= "['/users/new-user']"
         style="color:rgb(5, 9, 12);">
         Join <strong>+</strong>
       </button>
       </li>
+    
     </ul>
+ 
   </div>
 </nav>
 
@@ -46,18 +70,21 @@ font-family:-apple-system,
    <hr class="mb-0">
    <nav class="navbar navbar-expand-lg navbar-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
       <ul class="navbar-nav mr-0">
         <li class="nav-item dropdown " role="presentation" *ngFor="let category of internshipService.getIndustries(); let i=index" >
           
-          <a class="nav-link ml-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class=" btn btn-outline-dark nav-link ml-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        {{category.name}}
           </a>
+          
           <ul *ngIf ="i == 0" class="dropdown-menu dropdown-menu-left shadow">
           <li *ngFor="let subcat of category.subcategory">
             <a class="dropdown-item" 
             href="#">{{subcat}}</a>
           </li>  
           </ul>
+          
           <ul *ngIf ="i > 0" class="dropdown-menu dropdown-menu-right shadow">
             <li *ngFor="let subcat of category.subcategory">
               <a class="dropdown-item" 
@@ -65,26 +92,17 @@ font-family:-apple-system,
             </li>
           </ul>
         </li>
-
       </ul>
+
      </div>
     </nav>
     <hr class="mt-0">
    
     </div>
   </div>
-
 <div class="row">
   <div class="col-md-12">
     <router-outlet></router-outlet>
   </div>
-
-
 </div>
 </div>
-<hr>
-
-
-   
-  
-

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/user.service';
-import {User} from 'src/app/user.interface';
-import {InternshipService} from 'src/app/internship.service';
+import { User} from 'src/app/user.interface';
+import { InternshipService} from 'src/app/internship.service';
+
+
+
 
 @Component({
   selector: 'app-new-professional',
@@ -16,31 +20,40 @@ companyForm: FormGroup;
 user: User;
 hide: string;
 type: string;
+userexist:boolean;
+message:string;
+submit=false;
+state='false';
 
-  constructor(public userService: UserService, public internshipService: InternshipService) {
-    this.hide = 'show';
-    this.type = 'password';
+  constructor(public userService: UserService, public internshipService: InternshipService,
+    private router:Router) {
+      //redirect user to company registration if already registered
+      if(this.userService.getUserid()){
+        console.log("loged in");
+         this.router.navigate(['users/register-company']);
+      }
+      else{
+      this.hide = 'show';  //controlling password visibility
+      this.type = 'password';
+      this.userexist = false; //control alert if user already exists
+      }
+    
+
 
    }
 
   ngOnInit() {
-    this.personalForm = new FormGroup({
+    this.personalForm = new FormGroup({   //creating a reactive form instance
          fname: new FormControl(),
          lname: new FormControl(),
          email: new FormControl(),
          password: new FormControl(),
          phone: new FormControl()
 });
-    this.companyForm = new FormGroup({
-         companyName: new FormControl(),
-         industryType: new FormControl(),
-         noEmployees: new FormControl(),
-         website: new FormControl(),
-         address: new FormControl(),
-         region: new FormControl()
-});
+   
 
   }
+//controlling password toggle visibility
   toggle() {
       if (this.hide !== 'show') {
         this.hide = 'show';
@@ -50,7 +63,10 @@ type: string;
         this.type = 'text';
       }
   }
-  onPersonalSubmit() {
+  //hadling saving of professional
+  onPersonalSubmit(){     
+  this.submit=true;       
+     
      this.userService.regProfessional(
       this.personalForm.value.fname,
       this.personalForm.value.lname,
@@ -59,26 +75,20 @@ type: string;
       this.personalForm.value.phone,
       'professional')
      .subscribe(
-       () => {
-         this.personalForm.reset();
-       }
+       (response)=>{
+          this.message=response.message;
+          this.state = response.state;
+           console.log(response.message);
+           this.personalForm.reset();
+           // this.router.navigate(['users/company-registration']);
+         }
+
+       
        );
 
 }
 
-  onCompanySubmit() {
-    this.userService.regCompany(
-      this.companyForm.value.companyName,
-      this.companyForm.value.industryType,
-      this.companyForm.value.noEmployees,
-      this.companyForm.value.website,
-      this.companyForm.value.address,
-      this.companyForm.value.region)
-    .subscribe(
-      () => {
-        this.companyForm.reset();
-      }
-      );
 
-  }
+
+
 }

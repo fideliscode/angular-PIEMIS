@@ -1,129 +1,86 @@
-
 <br>
-
-<div class="container-fluid mb-4" >
+<div class="container-fluid mb-4 " >
 <div class="row">
   <!-- left section -->
 <div class="col-md-3">
 </div>
- <!-- middle section   -->
-<div class="col-md-6">
-  <div class = "alert alert-success alert-dismissable" *ngIf = "userService.getcompanyForm()"  >
-   <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
-      &times;
-   </button>
-   Successfully submitted! Just there yet.
+ 
+
+
+
+<!-- middle section   -->
+ <div class="col-md-6">
+
+<div class = "alert alert-danger alert-dismissable" *ngIf = "submit && (userService.getState() == 'true')"  >
+  <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+     &times;
+  </button>
+{{message}}
 </div>
-<div class = "alert alert-success alert-dismissable" *ngIf = "userService.getcomplete()"  >
-   <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
-      &times;
-   </button>
-   Successfully submitted! One more to go.
+<div class = "alert alert-success alert-dismissable" *ngIf = "submit && (userService.getState() == 'false')"  >
+  <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+     &times;
+  </button>
+{{message}}
 </div>
-<h4>Recruiter Registration</h4>
+<h4 *ngIf = "submit && (userService.getState() == 'true')" >
+We have sent you email varification please check your email to proceed</h4>
+<h4 *ngIf = "!(submit && (userService.getState() == 'true'))">Recruiter Registration</h4>
 <hr>
-<div class="card">
+
+
+<div class="card" *ngIf = "!(submit && (userService.getState() == 'true'))" >
           <div class="card-header text-center"
-            style="background-color: #008d0d; color: #fff;" *ngIf = "userService.getpersonalForm()">
+            style="background-color: #008d0d; color: #fff;" >
             Personal information
           </div>
-          <div class="card-header text-center"
-              style="background-color: #008d0d; color: #fff;" *ngIf = "userService.getcompanyForm()">
-              Company information
-          </div>
+         
+          <form  class="border border-light p-5" [formGroup]="personalForm"  (ngSubmit)="onPersonalSubmit()">
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label for="fname">First Name</label>
+                      <input type="text" formControlName="fname" id="fname"
+                      class="form-control mb-4" >
+                    </div>
 
-          <form *ngIf = "userService.getpersonalForm()" class="border border-light p-5" [formGroup]="personalForm" (ngSubmit)="onPersonalSubmit()">
-                                  <div class="form-row">
-                                      <div class="form-group col-md-6">
-                                          <label for="fname">First Name</label>
-                                          <input type="text" formControlName="fname" id="fname"
-                                          class="form-control mb-4" placeholder="First Name">
-                                        </div>
+                      <div class="form-group col-md-6">
+                      <label for="lname">Last Name</label>
+                      <input type="text"  formControlName="lname" id="lname"
+                      class="form-control mb-4" >
+                      </div>
+              </div>
 
-                                          <div class="form-group col-md-6">
-                                          <label for="lname">Last Name</label>
-                                          <input type="text"  formControlName="lname" id="lname"
-                                          class="form-control mb-4" placeholder="Last Name">
-                                          </div>
-                                  </div>
+              <div class="form-row">
+                    <div class="form-group col-md-6 ">
+                        <label for="email">Email</label>
+                        <input type="email"  formControlName="email" id="email"
+                        class="form-control mb-4" >
+                        </div>
 
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6 ">
-                                            <label for="email">Email</label>
-                                            <input type="email"  formControlName="email" id="email"
-                                            class="form-control mb-4" placeholder="Email">
-                                            </div>
+                        <div class="form-group col-md-6">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel"  formControlName="phone" id="phone"
+                        class="form-control mb-4" >
+                        </div>
+                </div>
+                <label for="password">Password</label>
+              <div class="form-row ">
+                <div class="form-group col-md-10">
+                  <input id="password" type={{this.type}} formControlName="password"
+                  class="form-control"  >
+                </div>
+                <div class="form-group col-md-2 mr-0">
+                  <button class="btn btn-success" (click)="toggle()">{{this.hide}}</button>
+                </div>
+              </div>
 
-                                            <div class="form-group col-md-6">
-                                            <label for="phone">Phone Number</label>
-                                            <input type="tel"  formControlName="phone" id="phone"
-                                            class="form-control mb-4" placeholder="Phone Number">
-                                            </div>
-                                    </div>
-                                    <label for="password">Password</label>
-                                  <div class="form-row ">
-                                    <div class="form-group col-md-10">
-                                      <input id="password" type={{this.type}} formControlName="password"
-                                      class="form-control"  placeholder="Password"  >
-                                    </div>
-                                    <div class="form-group col-md-2 mr-0">
-                                      <button class="btn btn-success" (click)="toggle()">{{this.hide}}</button>
-                                    </div>
-                                </div>
-
-                                  <button class="btn btn-success btn-block"
-                                  style="background-color: #008d0d;" type="submit"
-                                  [disabled]="!personalForm.valid">Sign Up
-                                  </button>
+              <button class="btn btn-success btn-block" 
+              style="background-color: #008d0d;" type="submit"
+            >Sign Up
+              </button>
             </form>
 
-  <form *ngIf = "this.userService.getcompanyForm()" class=" border border-light p-5" [formGroup]="companyForm"  (ngSubmit)="onCompanySubmit()">
-                          <div class="form-row">
-                            <div class="form-group col-md-6 ">
-                            <label for="companyName">Company Name</label>
-                            <input type="text" formControlName="companyName"
-                            class="form-control mb-4" placeholder="Company Name">
-                            </div>
-
-                            <div class="form-group col-md-6 ">
-                              <label for="noEmployees">Number of Employees</label>
-                            <select formControlName="noEmployees" id="noEmployees" class="browser-default custom-select">
-                                <option [value]="employee.range" *ngFor="let employee of internshipService.getEmployeesRange()">{{employee.range}}</option>
-                            </select>
-                            </div>
-                          </div>
-
-                          <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="industryType">Industry Type</label>
-                              <select formControlName="industryType" id="industryType" class="browser-default custom-select">
-                                <option [value]="industry.name" *ngFor="let industry of internshipService.getIndustries()">{{industry.name}}</option>
-                              </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="website">Website</label>
-                              <input type="text" id="website" formControlName="website" id="website"
-                              class="form-control mb-4" placeholder="Company Website">
-                            </div>
-                          </div>
-
-                          <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="address">Company Address</label>
-                                <textarea type="address"  id="address" formControlName="Company Address" ></textarea>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="region">Region</label>
-                                <select formControlName="region" class="browser-default custom-select">
-                                <option [value]="region.region" *ngFor="let region of internshipService.getRegions()">{{region.region}}</option>
-                            </select>
-                           </div>
-                          </div>
-                          <button class="btn btn-success btn-block "
-                          style="background-color: #008d0d;" type="submit"
-                          [disabled]="!companyForm.valid">Next
-                          </button>
-            </form>
+  
 </div>
 
 <!-- right section -->

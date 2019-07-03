@@ -25,6 +25,7 @@ user: User;
         private router: Router) {
           this.type= 'password';
           this.message ='';
+         
           
          
           
@@ -32,12 +33,12 @@ user: User;
 
  
   ngOnInit() {
+
     this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
             password: ['', Validators.required]
         });
-        // reset login status
-         this.authService.logout();
+    
   }
 
   // convenience getter for easy access to form fields
@@ -48,34 +49,42 @@ user: User;
     this.submitted= true;
     // stop here if form is invalid
         if (this.loginForm.invalid) {
-            this.router.navigate(['/users/login']);
-        }
-        else{
-           this.authService.login(this.f.email.value, this.f.password.value)
-           .subscribe(
-           (response)=>{
-            this.message = response.message;
-            const role = response.user[0].role;
-            
-            if(role == 'professional'){
-              console.log(this.message);
-              this.loginForm.reset();
-              this.router.navigate(['internships/new-internship']);
-              
-            }if (role == 'intern') {
-              this.loginForm.reset();
-              this.router.navigate(['users/intern-dashboard']);
-            } 
-            else {
-              console.log(this.message);
-            }
-             },
-           (err)=> {console.log(this.message)}
-          //  ()=>{
-          //   this.loginForm.reset();
-          //   this.router.navigate(['internships/new-internship']);
-          //  }
-           );
-        }
+          console.log("invalid form!");
+            this.router.navigate(['users/login']);
+        } 
+        else{this.authService.login(this.f.email.value, this.f.password.value)
+              .subscribe(
+                       (response)=>{
+                              this.message = response.message;
+                              const role = this.authService.getRole();
+                            
+                              if(response.user){
+
+                                      if(role== 'professional'){
+                                        console.log(this.message);
+                                        this.loginForm.reset();
+                                        this.router.navigate(['users/professional-dashboard']);
+                                      }
+
+                                      if (role == 'intern') {
+                                        this.loginForm.reset();
+                                        this.router.navigate(['users/intern-dashboard']);
+                                      } 
+                               }
+                               else{
+                                 
+                                 localStorage.clear();
+                                this.router.navigate(['users/login']);  
+                                this.loginForm.reset();          
+                              }
+
+                      },
+                      (err)=>{
+                        alert(err.message);
+
+                      }
+
+                   );
+          }
   }
 }

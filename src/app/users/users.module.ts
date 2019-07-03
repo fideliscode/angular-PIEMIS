@@ -9,6 +9,9 @@ import { UserloginComponent } from './userlogin/userlogin.component';
 import { ProfessionalDashboardComponent } from './professional-dashboard/professional-dashboard.component';
 import { CommonModule} from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { CompanyRegistrationComponent } from './new-professional/company-registration/company-registration.component';
+import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [UsersComponent,NewUserComponent,  
@@ -17,6 +20,9 @@ import { SharedModule } from '../shared/shared.module';
     InternDashboardComponent,
     UserloginComponent,
     ProfessionalDashboardComponent,
+    CompanyRegistrationComponent,
+    EmailConfirmationComponent,
+    AdminDashboardComponent,
     
   ],
   imports: [

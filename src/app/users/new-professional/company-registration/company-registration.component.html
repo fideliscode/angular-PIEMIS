@@ -1,0 +1,83 @@
+<br>
+<div class="container-fluid mb-4" >
+<div class="row">
+  <!-- left section -->
+<div class="col-md-3">
+</div>
+ 
+
+
+<!-- middle section   -->
+<div class="col-md-6">
+  <div class = "alert alert-success alert-dismissable" *ngIf = "authService.getProCompanny"  >
+     <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+        &times;
+     </button>
+     Successfully registered!
+  </div>
+
+  <h4>Recruiter Registration</h4>
+  <hr>
+<div class="card">
+    <div class="card-header text-center"
+    style="background-color: #008d0d; color: #fff;" >
+    Company information
+  </div>
+  
+  
+  <form 
+     class=" border border-light p-5" [formGroup]="companyForm"  (ngSubmit)="onCompanySubmit()">
+          <div class="form-row">
+            <div class="form-group col-md-6 ">
+            <label for="companyName">Company Name</label>
+            <input type="text" formControlName="companyName"
+            class="form-control mb-4">
+            </div>
+  
+            <div class="form-group col-md-6 ">
+              <label for="noEmployees">Number of Employees</label>
+            <select formControlName="noEmployees" id="noEmployees" class="browser-default custom-select">
+                <option [value]="employee.range" *ngFor="let employee of internshipService.getEmployeesRange()">{{employee.range}}</option>
+            </select>
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="industryType">Industry Type</label>
+              <select formControlName="industryType" id="industryType" 
+              class="browser-default custom-select">
+                <option [value]="industry.name" *ngFor="let industry of internshipService.getIndustries()">{{industry.name}}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="website">Website</label>
+              <input type="text" id="website" formControlName="website" id="website"
+              class="form-control mb-4" placeholder="Company Website">
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="address">Company Address</label>
+                <textarea type="address" rows="4" id="address" formControlName="address" ></textarea>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="region">Region</label>
+                <select formControlName="region" class="browser-default custom-select">
+                <option [value]="region.region" *ngFor="let region of internshipService.getRegions()">{{region.region}}</option>
+            </select>
+            </div>
+          </div>
+          <button class="btn btn-success btn-block "
+          style="background-color: #008d0d;" type="submit"
+          [disabled]="!companyForm.valid">Save
+          </button>
+              </form>
+
+</div>
+</div>
+ <div class="col-md-3">
+</div>
+</div>
+</div>

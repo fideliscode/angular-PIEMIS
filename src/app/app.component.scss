@@ -3,6 +3,13 @@
     background-color:#28a745;
     border:0px; 
 }
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #f8f9fa;
+}
+.btn-outline-dark:hover{
+    color: #ffffff !important;
+    border-color: #343a40;
+}
 
 .btn-primary{
     background-color: rgb(5, 9, 12) !important;
@@ -22,4 +29,19 @@
  }
  .text-muted {
     color: blanchedalmond!important;
+}
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 27px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
 }

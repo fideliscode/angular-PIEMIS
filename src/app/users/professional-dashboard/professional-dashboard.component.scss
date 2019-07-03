@@ -17,12 +17,16 @@
     border-bottom: 1px solid rgb(11, 4, 16);
     color: #fff;
 }
-
 .btn {
       color: #f9f9f9; 
     background-color: #384248;
    
 }
+
+/*.input-group-prepend[_ngcontent-c1] {
+    margin-right: -1px;
+    margin-top: 0px;
+}*/
 .btn btn-default:hover{
     color: aqua;
     background-color: #fff;
@@ -45,6 +49,7 @@
     align-items: center;
     padding: 0.375rem 0.75rem;
     margin-bottom: 0;
+    margin-top:-9px;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -55,3 +60,10 @@
     border: 1px solid #ffffff;
     border-radius: 0.25rem;
 }
+.table-success[_ngcontent-c1] th[_ngcontent-c1], .table-success[_ngcontent-c1] td[_ngcontent-c1], .table-success[_ngcontent-c1] thead[_ngcontent-c1] th[_ngcontent-c1], .table-success[_ngcontent-c1] tbody[_ngcontent-c1] + tbody[_ngcontent-c1] {
+    border-color: #0f100f;
+}
+
+/*.table-striped[_ngcontent-c1] tbody[_ngcontent-c1] tr[_ngcontent-c1]:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.83);
+}*/

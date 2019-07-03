@@ -1,7 +1,7 @@
-<div class="row mb-4">
-  <div class="col-md-2 mb-3">
+<div class="row mb-4 ">
+  <div class="col-md-3 ">
 
-<div class="list-group" id="myList" role="tablist" style="height: 100%;color: black;">
+<div class="list-group mb-4" id="myList" role="tablist" style="color: black;">
   <a class="list-group-item" style="background-color: #384248;"  href="#home" role="tab">
     <span class="menu"></span>
     <span class="menu"></span>
@@ -9,44 +9,21 @@
   </a>
   <a class="list-group-item list-group-item-action active " data-toggle="list" href="#profile" role="tab"><strong>ACCOUNT</strong></a>
   <a class="list-group-item list-group-item-action " data-toggle="list" href="#messages" role="tab"><strong>INTERNS POOL</strong></a>
-  <a class="list-group-item list-group-item-action " data-toggle="list" href="#messages" role="tab"><strong>INTERNSHIPS</strong></a>
+  <a class="list-group-item list-group-item-action " (click)="onInternships()" 
+   data-toggle="list" href="#messages" role="tab">
+  <strong>INTERNSHIPS</strong></a>
   <a class="list-group-item list-group-item-action " data-toggle="list"
    href="#settings" role="tab"><strong>PRODUCTS</strong></a>
    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
    data-toggle="list"
    href="#notifications" role="tab">
       <strong>Notifications</strong>
-      <span class="badge badge-primary badge-pill">2</span>
+      <span class="badge badge-primary badge-pill">{{notifications}}</span>
    </a>
 </div>
-</div>
-
-<div class="col-md-10">
-    <div class="row mb-3">
-      <div class="col-md-9">
-          <form class="form-inline ml-auto">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1"><strong>Find</strong> </span>
-                </div>
-              <input type="text" class="form-control mr-sm-2 mb-2" placeholder="Skills,Keywords">
-              <input type="text" class="form-control mr-sm-2 mb-2" placeholder="Place, Institution">
-              <button type="submit" class="btn btn-outline-light mb-2">Search</button>
-             
-          </form>
-      </div>
-      <div class="col-md-3">
-          <button type="submit" [routerLink]= "['/internships/new-internship']"class="btn btn-outline-light btn-block mb-2"><span><strong>+</strong></span> Create Internship</button>
-      </div>
-    </div>
-  <div class="row mb-3">
-      <div class="col-md-9" style="margin-right: 0px;">
-             
-              <app-new-internship ></app-new-internship>
-          
-        </div>
-        <div class="col-md-3">
-            <div class="card border-secondary mb-3" style="max-width: 100%;">
-                <div class="btn btn-default" style="border-radius: 0px;">Interns</div>
+  
+            <div class="card border-secondary mt-2" style="max-width: 100%;">
+                <div class="btn btn-default" style="border-radius: 0px;"><h6>Interns Pool</h6></div>
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -62,8 +39,80 @@
             </div>
           </div>
         </div>
-        </div>
+        
+</div>
+
+<div class="col-md-9">
+    <div class="row mb-3">
+      <div class="col-md-9">
+          <form class="form-inline ml-auto">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><strong>Find</strong> </span>
+                </div>
+              <input type="text" class="form-control mr-sm-2 mb-2" placeholder="Skills,Keywords">
+              <input type="text" class="form-control mr-sm-2 mb-2" placeholder="Place, Institution">
+              <button type="submit" class="btn btn-outline-light mb-2">Search</button>
+             
+          </form>
+      </div>
+      <div class="col-md-3">
+          <button type="submit" [routerLink]= "['/users/professional-dashboard']"class="btn btn-outline-light btn-block mb-2"><span><strong>+</strong></span> Create Internship</button>
+      </div>
+    </div>
+  
+  <div class="row mb-3">
+     <!--  <div class="col-md-12" style="margin-right: 0px;" *ngIf="!internshipstab">
+             
+              <app-new-internship ></app-new-internship>
+          
+        </div> -->
+
+         <div class="col-lg-12" style="margin-right: 0px;" >
+                   <h5>INTERNSHIPS</h5>
+            <table  class="table  table-bordered  table-sm table-hover" style="border-radius: 10px;">
+                
+                    <tr >
+                      <th>#</th>
+                      <th>Position</th>
+                      <th>Description</th>
+                      <th>Activities</th>
+                      <th>Category</th>
+                      <th>Status</th>
+                        <th>Image</th>
+                    </tr>
+                 
+               
+               
+            <tbody *ngFor="let internship of proInternships; let i=index">
+                <tr >
+                    <th scope="row">{{i+1}}</th>
+                       <td scope="row">{{internship.internshipPosition |  titlecase}}</td>
+                       <td data-toggle="tooltip" data-placement="auto right" title="click to Edit"
+                       style="cursor: pointer;">{{internship.qualifications |  titlecase}}
+                       </td> 
+                        <td data-toggle="tooltip" data-placement="auto right" title="click to Edit"
+                        style="cursor: pointer;">{{internship.description |  titlecase}}
+                       </td>
+                        <td data-toggle="tooltip" data-placement="auto right" title="click to Edit"
+                         style="cursor: pointer;">{{internship.subcategory |  titlecase}}
+                       </td>
+                       <td class="btn btn-danger btn-sm mt-1 shadow">
+                       {{internship.isPublished |  titlecase }}</td>
+                       <td> <img src="http://localhost:3000/{{internship.internshipfile }}"  style="width:250px;background-color:honeydew ;height:180px;border-radius: 10px;">
+                       </td>
+                    
+                    </tr>
+               </tbody>
+              </table> 
+
+          </div>
   </div>
+
+
+
+             
+             
+       
   <div class="row">
     <div class="col-md-12">
         <div class="card border-secondary mb-3" style="max-width: 100%;">

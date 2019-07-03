@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable} from 'rxjs';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { map,tap } from 'rxjs/operators';
-import {Internship} from './internship.interface';
-import {Employee} from './model/employee';
-import {Region} from './model/region';
-import {Industry} from './model/industry';
-
+import { Internship} from './internship.interface';
+import { User} from './user.interface';
+import { Employee} from './model/employee';
+import { Region} from './model/region';
+import { Industry} from './model/industry';
+import { Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,59 +15,66 @@ employees: Employee[];
 regions: Region[];
 industries: Industry[];
 internship : Internship;
-// Apiurl = 'localhost:3000';
-Apiurl = 'https://node-rest-piemis.herokuapp.com';
+currentInternship: Internship;
+Apiurl = 'http://localhost:3000';
+internships:Internship[]=[];
+proInternships:Internship[]=[];
+application:{status: string;
+            _id:string;
+            intern:User;
+            professional:string;
+          };
+// Apiurl = 'https://node-rest-piemis.herokuapp.com';
 
   constructor(private httpclient: HttpClient) {
    }
-fileupload(formdata){
-	const body = formdata;
-	return this.httpclient.post(this.Apiurl+'/upload', body,
-  {headers :new HttpHeaders({'Content-Type': 'application/json',
-   'X-Requested-With': 'XMLHttpRequest'})});
-}
 
-
-regInternship(value){
-  const internshipPosition = value.internshipPosition; 
-  const description = value.description; 
-  const qualifications = value.qualifications; 
-  const subcategory = value.subcategory;
-  const tags = [value.tag1, value.tag2, value.tag3];
-  const body = JSON.stringify({internshipPosition,description,qualifications,subcategory,tags});
-  console.log("before api end point")
-  return this.httpclient.post(this.Apiurl+'/internships', body,
-  {headers :new HttpHeaders({'Content-Type': 'application/json',
-   'X-Requested-With': 'XMLHttpRequest'})})
-  .pipe(
-   map(
-      (res: Internship)=>{
-        this.internship = res;
-        console.log('in map operator');
-        return this.internship._id;})
-   )
-   .pipe(
-    tap(
-      regdata2=>{
-      localStorage.setItem('internship_id', this.internship._id);
-      console.log('localstorage');
-      }
-    ));
-    }
-    
-    getInternships(){
+getInternships():Observable<Internship[]>{
       return this.httpclient.get(this.Apiurl+'/internships')
       .pipe(
         map((res: Internship[])=>{
+          this.internships = res;
+          // console.log(this.internships);
           return res;
         })
       );
     }
 
 
+getApplications(){
+  const id = localStorage.getItem('userid');
+    return this.httpclient.get(this.Apiurl+'/applications/notifications/' + id)
+    .pipe(
+      map((res: any)=>{
+        return res;
+      })
+    );
+   
+  } 
+
+
+
+ applyIternship(intern:string,status:string,theinternship:string, professional:string){
+ console.log('5');
+  const body = JSON.stringify({intern,status,theinternship, professional});
+console.log(body);
+  return this.httpclient.post(this.Apiurl+ '/applications', body,
+  {headers:new HttpHeaders({'Content-Type':'application/json', 'X-Requested-With': 'XMLHttpRequest' })})
+  .pipe( map((res:any)=>{  console.log(res);  return res;}));
+}
+
+
+setInternship(internship: Internship){
+     this.currentInternship = internship;
+ }
+
+getCurrentInternship(){
+return this.currentInternship;
+}
+
 public getIndustries(){
 	return this.industries = [
-    {name:'Computers & Technology', subcategory:['Web Programming','Database Management',
+    {name:'Computers & Technology', subcategory:['Programming','Database Management',
     'Information Technology', 'Information Systems Development','mobile Development', 'Network Security', 'Network Administration',
     'data analysis','Software Engineering', 'Server Administration', 'Computer Engineering',
     'Information Systems Security']},
@@ -80,11 +87,11 @@ public getIndustries(){
     'Supply Chain', 'Training & Development']},
   
      {name:'Education & Teaching', subcategory:['Online Teaching', 'Music Education', 
-     'Child Development', 'Early Childhood education', 'Special Teaching', 
+     'Child Development', 'Early Childhood education', 'Special Teaching', 'Social education',
      'Language Teaching', 'Curiculum Teaching', 'Educational Administration', 'Coaching']},
   
      {name:'Arts & Design', subcategory:['Animation','Arts & History', 'Creative/Design', 'Fashion',
-     'Film', 'Game Design', 'Interior Design', 'Landscape Architecture', 'Multimedia Design', 
+     'Film', 'Game Design', 'Interior Design', 'Landscape Architecture', 'Multimedia Design',"Jounalism",
      'Photography', 'Visual Communications', 'Web Design']},
   
      {name:'Health & Nursing', subcategory:['Public Health', 'Research', 'Nursing', 

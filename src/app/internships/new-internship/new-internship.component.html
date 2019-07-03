@@ -1,26 +1,63 @@
  
           <h4>Internship Registration</h4>
             <hr>
-    <div class="card">
-    <div class = "alert alert-success alert-dismissable" *ngIf = "userService.getcomplete()"  >
-       <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+    <div class = "alert alert-success alert-dismissable" *ngIf="success">
+      <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
           &times;
-       </button>
-      Successfully submitted! One more to go.
+      </button>
+      Successfully submitted!
     </div>
+    
+    <div class="card"> 
     <div class="card-header text-center"
-    style="background-color: #008d0d; color: #fff;" >Internship Details 
+    style="background-color: #008d0d; color: #fff;" ><h6>Internship Details</h6>
     </div>
-    <form  class=" border border-light p-5" [formGroup]="internshipForm"
+    
+    <form  class=" border border-light p-5" [formGroup]="internshipForm" 
     (ngSubmit)="oncreateInternship()">
-             <div class="form-row">
-              <div class="form-group  col-md-6">
-                <label for="intpos">Internship Position</label>
-                <input id="intpos" type="text" formControlName="internshipPosition"
-                class="form-control mb-4" >
+            <div class="form-row mb-4">
+              <div class="form-group col-md-4">
+                  <div style="width:200px;height:200px;">
+                      <label>Company Logo/Internship Image</label>
+               <img id="picha" #picha  style="width:200px;background-color:honeydew ;height:200px;border-radius:5px;">
+                <input type="file" id="internshipfile" (change)="onFileSelected($event)"
+                 #internshipfile style="display:none"/>
+                <button class="btn btn-outline-dark btn-block mt-2" (click)="internshipfile.click()" 
+                >Choose an image </button>
+               </div>
               </div>
+            
+               <div class="form-group col-md-8">
+                 
+                  
+                  <div class="form-group ">
+                    <label for="intpos">Internship Position</label>
+                    <input id="intpos" type="text" formControlName="internshipPosition"
+                    class="form-control mb-4" >
+                  </div>
+                    <div class="form-group ">
+                      <label for="desc">Qualifications</label>
+                      <textarea id="desc" class="form-control " formControlName="qualifications"
+                      rows="5" placeholder="Applicant must..."></textarea>
+                    </div>
+                    <div class="form-group ">
+                      <label for="vacancy">Vacancies</label>
+                        <input id="vacancy" type="integer" formControlName="vacancy"
+                    class="form-control mb-4" >
+                    </div>
+                
 
-                <div class="form-group col-md-6">
+                </div>
+              </div>
+  
+             
+              <div class="form-group shadow-textarea">
+                  <label for="intfunc">Internship Activities</label>
+                  <textarea id="intfunc" class="form-control " formControlName="description"
+                  rows="5" placeholder="Intern will be responsible for..."></textarea>
+                 </div>
+
+                <div class="form-group ">
                   <label for="industryType">Internship Category</label>
                   <select formControlName="subcategory" id="industryType" class="browser-default custom-select">
                     <optgroup label= {{industry.name}} *ngFor="let industry of internshipService.getIndustries(); let i =index">
@@ -32,17 +69,9 @@
                       
                     </select>
                   </div>
-                </div>
-               <div class="form-group shadow-textarea">
-                  <label for="intfunc">Internship Activities</label>
-                  <textarea id="intfunc" class="form-control " formControlName="description"
-                  rows="3" placeholder="Intern will be responsible for..."></textarea>
-                 </div>
-                <div class="form-group ">
-                  <label for="desc">Qualifications</label>
-                  <textarea id="desc" class="form-control " formControlName="qualifications"
-                  rows="3" placeholder="Applicant must..."></textarea>
-                </div>
+               
+              
+              
 
             
               <div class="form-row">
@@ -71,19 +100,14 @@
                 
               </div>
                   
-              
-
- <div class="form-row">
-  <div class="form-group col-md-3"></div>
-  <div class="form-group col-md-6">
-    <button class="btn btn-success btn-block shadow"
-    type="submit"
-    [disabled]="!internshipForm.valid">Save
-    </button>
-  </div>
-  <div class="form-group col-md-3"></div>
-   
-  
- </div>
+              <div class="form-row">
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-6">
+  <button class="btn btn-success btn-block shadow" type="submit">Save</button>
+                        </div>
+                        <div class="form-group col-md-3"></div>
+              </div>
     
     </form>
+    </div>
+    

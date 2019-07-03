@@ -4,9 +4,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InternshipsRoutingModule } from './internships-routing.module';
 import { HttpClientModule} from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
+import { ViewInternshipComponent } from './view-internship/view-internship.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [ViewInternshipComponent],
   imports: [
     CommonModule,
     InternshipsRoutingModule,
