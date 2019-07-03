@@ -24,8 +24,8 @@ internships:Internship[]=[];
 notifications:number;
 
 
-constructor(private userService:UserService,private authService:AuthService,
-	private internshipService:InternshipService, private router: Router) { 
+constructor(public userService:UserService,public authService:AuthService,
+	public internshipService:InternshipService, public router: Router) { 
 
 
 this.internshipstab=false;

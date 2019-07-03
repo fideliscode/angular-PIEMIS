@@ -11,8 +11,8 @@ import { Router} from '@angular/router';
 export class AppComponent {
 	
 	position = 'center';
-	constructor(public internshipService: InternshipService, private router:Router,
-    private authService: AuthService, private userService: UserService){
+	constructor(public internshipService: InternshipService, public router:Router,
+    public authService: AuthService, public userService: UserService){
 		
 		this.position='center';
 	}

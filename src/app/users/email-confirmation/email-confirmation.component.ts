@@ -11,8 +11,8 @@ import { switchMap } from 'rxjs/operators';
 export class EmailConfirmationComponent implements OnInit {
 
   email:string;
-  constructor(private userService:UserService,private route: ActivatedRoute,
-    private router: Router){
+  constructor(public userService:UserService,public route: ActivatedRoute,
+    public router: Router){
     this.email='';
   }
  

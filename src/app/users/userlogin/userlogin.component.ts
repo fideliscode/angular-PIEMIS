@@ -21,8 +21,8 @@ message = '';
 user: User;
  
   type:string;
-  constructor(private authService: AuthService, private formBuilder: FormBuilder,  private route: ActivatedRoute,
-        private router: Router) {
+  constructor(public authService: AuthService, public formBuilder: FormBuilder,  public route: ActivatedRoute,
+        public router: Router) {
           this.type= 'password';
           this.message ='';
          

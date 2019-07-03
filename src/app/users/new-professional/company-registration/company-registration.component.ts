@@ -18,7 +18,7 @@ user: User;
 
 
   constructor(public userService: UserService, public internshipService: InternshipService, 
-  private authService: AuthService, private router:Router ){
+  public authService: AuthService, public router:Router ){
       if(this.authService.getProCompany()){
           this.router.navigate(['users/professional-dashboard'])
       }

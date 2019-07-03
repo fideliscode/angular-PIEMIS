@@ -26,7 +26,7 @@ submit=false;
 state='false';
 
   constructor(public userService: UserService, public internshipService: InternshipService,
-    private router:Router) {
+    public router:Router) {
       //redirect user to company registration if already registered
       if(this.userService.getUserid()){
         console.log("loged in");
