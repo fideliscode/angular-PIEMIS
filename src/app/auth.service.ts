@@ -19,8 +19,8 @@ export class AuthService {
   token:string;
   message:string;
   fail=false;
- 
-  Apiurl = 'http://localhost:3000';
+ Apiurl = "https://node-rest-piemis.herokuapp.com";
+  //Apiurl = 'http://localhost:3000';
   //  Apiurl = 'https://node-rest-piemis.herokuapp.com';
     constructor(private httpClient: HttpClient,private router: Router) { }
 

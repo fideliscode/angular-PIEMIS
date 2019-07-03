@@ -16,7 +16,8 @@ export class UserService {
   companyRegistered:boolean = false;
   state ='false';
   // Apiurl = 'https://node-rest-piemis.herokuapp.com';
-  Apiurl = 'http://localhost:3000';
+  //Apiurl = 'http://localhost:3000';
+  Apiurl = "https://node-rest-piemis.herokuapp.com";
 
   constructor(private httpclient: HttpClient, private router: Router) {
     

@@ -18,7 +18,8 @@ export class NewInternshipComponent implements OnInit {
   internshipForm:FormGroup;
   attachfile: boolean;
   image:any;
-  Apiurl = 'http://localhost:3000';
+  Apiurl = "https://node-rest-piemis.herokuapp.com";
+ // Apiurl = 'http://localhost:3000';
   submitted=false;
   success= false;
 

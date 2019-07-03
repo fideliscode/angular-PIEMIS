@@ -21,7 +21,8 @@ export class ViewInternshipComponent implements OnInit {
   		status:string;
   		notactive:boolean;
   		message:string;
-Apiurl = 'http://localhost:3000';
+//Apiurl = 'http://localhost:3000';
+Apiurl = "https://node-rest-piemis.herokuapp.com";
 
   constructor(private httpclient:HttpClient,private internshipService:InternshipService, private router: Router
    ) {
