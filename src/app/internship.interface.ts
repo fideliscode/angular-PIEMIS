@@ -6,6 +6,9 @@ export class Internship{
       qualifications: string;
       subcategory: string;
       tags:[string];
+      vacancy:string;
+      updatedAt:Date;
+      createdAt:Date;
       interns:[{
                   intern:string;
                   status:string;
