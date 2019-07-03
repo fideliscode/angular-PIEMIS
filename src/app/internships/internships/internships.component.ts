@@ -15,7 +15,7 @@ export class InternshipsComponent implements OnInit {
   count:number;
   variable:string;
 
-  constructor(private internshipService:InternshipService, private userService:UserService) {
+  constructor(public internshipService:InternshipService, public userService:UserService) {
     this.end=5;
     this.initial=0;
     this.variable="Next";

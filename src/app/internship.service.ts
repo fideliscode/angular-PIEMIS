@@ -17,7 +17,7 @@ industries: Industry[];
 internship : Internship;
 currentInternship: Internship;
 //Apiurl = 'http://localhost:3000';
-Apiurl = "https://node-rest-piemis.herokuapp.com/";
+Apiurl = "https://node-rest-piemis.herokuapp.com";
 internships:Internship[]=[];
 proInternships:Internship[]=[];
 application:{status: string;
