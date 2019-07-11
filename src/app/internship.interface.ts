@@ -1,6 +1,7 @@
 export class Internship{
       _id:string;
       internshipfile:string;
+      isPublished:string;
       internshipPosition: string;
       description: string;
       qualifications: string;

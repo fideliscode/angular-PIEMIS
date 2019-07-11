@@ -6,6 +6,12 @@ export class User{
     password: string;
     phone: string;
     role: string;
+    internshipName:string;
+      bio:string;
+        image: string;
+        skills: string;
+        location:string;
+        Institution: string;
     company:{
     	companyName:string;
         noEmployees:string;

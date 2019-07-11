@@ -12,6 +12,8 @@ import { SharedModule } from '../shared/shared.module';
 import { CompanyRegistrationComponent } from './new-professional/company-registration/company-registration.component';
 import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { InternComponent } from './intern/intern.component';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [UsersComponent,NewUserComponent,  
@@ -23,6 +25,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     CompanyRegistrationComponent,
     EmailConfirmationComponent,
     AdminDashboardComponent,
+    InternComponent,
+    ReportComponent,
     
   ],
   imports: [

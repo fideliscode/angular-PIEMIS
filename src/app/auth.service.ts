@@ -13,16 +13,18 @@ providedIn: 'root'
 export class AuthService {
   user: User;
   user_id:string;
+  user_fname:string;
+  user_lname:string;
   user_role:string;
   company_name:string;
   userid:string;
   token:string;
   message:string;
   fail=false;
- Apiurl = "https://node-rest-piemis.herokuapp.com";
+  Apiurl = "https://node-rest-piemis.herokuapp.com";
   //Apiurl = 'http://localhost:3000';
-  //  Apiurl = 'https://node-rest-piemis.herokuapp.com';
-    constructor(private httpClient: HttpClient,private router: Router) { }
+
+constructor(private httpClient: HttpClient,private router: Router) { }
 
     login(email: string, password: string){
       const body = JSON.stringify({email, password});
@@ -32,6 +34,8 @@ export class AuthService {
        map((res: any)=>{
             this.message = res.message;
            if(res.user){
+             this.user_fname=res.user.fname;
+             this.user_lname=res.user.lname;
              this.fail=false;
              this.user = res.user;
              this.user_id = res.user._id;
@@ -39,13 +43,13 @@ export class AuthService {
              this.company_name = res.user.company.companyName;
              this.token = res.token;
             
-            return {token:this.token,user_id:this.user_id,user_role:this.user_role,
+            return {token:this.token,user_id:this.user_id,user_role:this.user_role,user_fname:this.user_fname,user_lname:this.user_lname,
               user:this.user,message:this.message, company:this.company_name}
            } else{
 
              this.fail=true;
              return {token:null,user_id:null,user_role:null,fail:this.fail,
-              user:null,message:this.message, company: null};
+              user:null,message:this.message, company: null,user_fname:null,user_lname:null};
            }
            
           })
@@ -54,6 +58,8 @@ export class AuthService {
         tap(
          
             loginData=>{
+          localStorage.setItem('fname', loginData.user_fname);
+          localStorage.setItem('lname', loginData.user_lname);
           localStorage.setItem('token', loginData.token);
           localStorage.setItem('userid', loginData.user_id);
           localStorage.setItem('role', loginData.user_role);
@@ -92,6 +98,12 @@ getProCompany(){
     
     // return localStorage.getItem('company');
     }
+getName(){
+  let fname= localStorage.getItem('fname');
+  let lname = localStorage.getItem('lname');
+  const name = fname +" " + lname;
+  return name;
+}
 getUserid(){
       this.userid = localStorage.getItem('userid');
       return localStorage.getItem('userid');

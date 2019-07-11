@@ -16,16 +16,8 @@ canActivate( next: ActivatedRouteSnapshot,state: RouterStateSnapshot):
  {
       if(this.authService.Authenticated() && (this.authService.getRole()=='professional')){
 			//change later
-			if(true){
-				console.log('456');
-				return true;
-				
-			}
-			else{
-				console.log('123');
-				return this.router.parseUrl("/users/register-company");
-					
-			}
+			console.log('111');
+			return true;
       }
       else{
       	console.log('789');

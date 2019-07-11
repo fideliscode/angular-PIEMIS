@@ -1,28 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-
+import { InternshipService} from 'src/app/internship.service';
+import { UserService} from 'src/app/user.service';
+import { User} from 'src/app/user.interface';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  usersForm: FormGroup;
+  intern :User;
+  interns : User[] = [];
+  end:number;
+  initial:number;
+  count:number;
+  variable:string;
+  showPosition:boolean=false;
 
-  constructor() { }
+  constructor(public internshipService:InternshipService, public userService:UserService) {
+    this.end=5;
+    this.initial=0;
+    this.variable="Next";
+    this.internshipService.getInterns().subscribe(
+      (interns: User[])=>{
+        this.interns = interns;
+        this.count = this.interns.length;
+      }
+    );
+   }
 
   ngOnInit() {
-    this.usersForm = new FormGroup({
-          firstName: new FormControl(),
-          lastName: new FormControl(),
-          email: new FormControl(),
-          password: new FormControl(),
-          phone: new FormControl()
-});
   }
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.usersForm.value);
-
-}
+  
+  onBrowse(){
+    if((this.end > this.count) || (this.end == this.count)){  
+      this.initial = 0;
+      this.end = 5;
+      this.variable="Next";
+    }
+    else{  
+      this.variable="Next";   
+      this.initial = this.end;
+      this.end += 5;
+      if(this.end-this.count> 0)
+        this.variable="Prev";
+       return;
+      }    
+  }
 }

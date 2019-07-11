@@ -29,7 +29,7 @@ font-family:-apple-system,
          *ngIf="this.authService.Authenticated && (this.authService.getRole() == 'professional')">
         <a class="nav-link"  [routerLink]= "['/users/professional-dashboard']" 
         
-        style="color:rgb(5, 9, 12);"><h5>My Dashboard</h5></a>
+        style="color:green;"><h5>{{company | titlecase}} Dashboard</h5></a>
       </li>
 <!--  -->
 
@@ -38,8 +38,9 @@ font-family:-apple-system,
          *ngIf="this.authService.Authenticated && (this.authService.getRole() == 'intern')">
         <a class="nav-link"  [routerLink]= "['/users/intern-dashboard']" 
         
-        style="color:rgb(5, 9, 12);"><h5>My Dashboard</h5></a>
+        style="color:rgb(5, 9, 12);"><h5>My Account</h5></a>
       </li>
+
 <!--  -->
       <li class="nav-item" *ngIf="!this.authService.Authenticated()">
         <a class="nav-link"   [routerLink]= "['/users/login']" style="color:rgb(5, 9, 12);"><h5>Sign in</h5></a>
@@ -65,7 +66,7 @@ font-family:-apple-system,
 </nav>
 
 <div class="container-fluid">
-  <div class="row">
+<!--   <div class="row">
     <div class="col-md-12">
    <hr class="mb-0">
    <nav class="navbar navbar-expand-lg navbar-light">
@@ -74,21 +75,20 @@ font-family:-apple-system,
       <ul class="navbar-nav mr-0">
         <li class="nav-item dropdown " role="presentation" *ngFor="let category of internshipService.getIndustries(); let i=index" >
           
-          <a class=" btn btn-outline-dark nav-link ml-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class=" btn btn-outline-dark nav-link ml-3"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        {{category.name}}
           </a>
           
           <ul *ngIf ="i == 0" class="dropdown-menu dropdown-menu-left shadow">
           <li *ngFor="let subcat of category.subcategory">
-            <a class="dropdown-item" 
-            href="#">{{subcat}}</a>
+            <a class="dropdown-item" (click)= "onSearch(subcat)"
+            >{{subcat}}</a>
           </li>  
           </ul>
           
           <ul *ngIf ="i > 0" class="dropdown-menu dropdown-menu-right shadow">
             <li *ngFor="let subcat of category.subcategory">
-              <a class="dropdown-item" 
-            href="#">{{subcat}}</a>
+              <a class="dropdown-item" (click)= "onSearch(subcat)"   >{{subcat}}</a>
             </li>
           </ul>
         </li>
@@ -99,9 +99,10 @@ font-family:-apple-system,
     <hr class="mt-0">
    
     </div>
-  </div>
+  </div> -->
 <div class="row">
   <div class="col-md-12">
+
     <router-outlet></router-outlet>
   </div>
 </div>

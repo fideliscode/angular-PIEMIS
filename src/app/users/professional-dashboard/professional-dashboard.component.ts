@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/user.service';
 import { InternshipService} from 'src/app/internship.service';
-import { from } from 'rxjs';
 import { Router} from '@angular/router';
 import { User} from 'src/app/user.interface';
 import { Internship} from 'src/app/internship.interface';
@@ -23,15 +22,21 @@ applications: Application[]=[];
 internships:Internship[]=[];
 notifications:number;
 
+company ="My";
+interns:User[]=[];
+ShowNotification:boolean;
+showPosition:boolean=true;
 
 constructor(public userService:UserService,public authService:AuthService,
 	public internshipService:InternshipService, public router: Router) { 
 
+this.ShowNotification=false;
 
-this.internshipstab=false;
+this.internshipstab=true;
+this.interns= [];
 
 
-  this.internshipService.getInternships().subscribe(
+  this.internshipService.getProInternships().subscribe(
       (internships: Internship[])=>{
         this.internships = internships;
        
@@ -58,8 +63,54 @@ this.internshipstab=false;
   
   }
   onInternships(){
+   
   	this.internshipstab=true;
+    this.router.navigate(['users/professional-dashboard']);
   	}
+  
+onNotification(){
+  if (this.interns.length >0) {
+     this.ShowNotification = true;
+  this.internshipstab=false;
+   return this.interns;
+  }else{
+ this.ShowNotification = true;
+  this.internshipstab=false;
+  for (var i = this.applications.length - 1; i >= 0; i--) {
+   this.interns.push(this.applications[i].intern);
+  }
+  for (var i = this.interns.length - 1; i >= 0; i--) {
+    this.interns[i].internshipName = this.applications[i].theinternship.internshipPosition;
+  }
+return this.interns;
+}
+  }
+
+  onPublish(internship){
+    if (internship.isPublished == "NOT PUBLISHED") {
+      const status ="PUBLISHED";
+      console.log(internship._id);
+      this.internshipService.updateInternship(internship, status)
+      .subscribe((res)=>{
+        alert(res.msg);
+
+        
+      });
+
+
+    }
+    else{
+     const status ="NOT PUBLISHED";
+      console.log(internship._id);
+      this.internshipService.updateInternship(internship, status)
+      .subscribe((res)=>{
+        alert(res.msg);
+       
+      });
+
+    }
+
+  }
   
 
 }

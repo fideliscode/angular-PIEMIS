@@ -7,17 +7,18 @@ import { Employee} from './model/employee';
 import { Region} from './model/region';
 import { Industry} from './model/industry';
 import { Observable} from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class InternshipService {
 employees: Employee[];
 regions: Region[];
+interns:User[]=[];
 industries: Industry[];
 internship : Internship;
 currentInternship: Internship;
-//Apiurl = 'http://localhost:3000';
-Apiurl = "https://node-rest-piemis.herokuapp.com";
 internships:Internship[]=[];
 proInternships:Internship[]=[];
 application:{status: string;
@@ -25,10 +26,11 @@ application:{status: string;
             intern:User;
             professional:string;
           };
-// Apiurl = 'https://node-rest-piemis.herokuapp.com';
+ Apiurl = 'https://node-rest-piemis.herokuapp.com';
+//Apiurl = 'http://localhost:3000';
 
-  constructor(private httpclient: HttpClient) {
-   }
+constructor(private httpclient: HttpClient) {}
+
 
 getInternships():Observable<Internship[]>{
       return this.httpclient.get(this.Apiurl+'/internships')
@@ -40,7 +42,16 @@ getInternships():Observable<Internship[]>{
         })
       );
     }
-
+getProInternships():Observable<Internship[]>{
+      return this.httpclient.get(this.Apiurl+'/internships/pro')
+      .pipe(
+        map((res: Internship[])=>{
+          this.internships = res;
+          // console.log(this.internships);
+          return res;
+        })
+      );
+    }
 
 getApplications(){
   const id = localStorage.getItem('userid');
@@ -53,6 +64,16 @@ getApplications(){
    
   } 
 
+getInterns(){
+  return this.httpclient.get(this.Apiurl+'/users/interns')
+      .pipe(
+        map((res: User[])=>{
+          this.interns = res;
+          console.log(this.interns);
+          return res;
+        })
+      );
+}
 
 
  applyIternship(intern:string,status:string,theinternship:string, professional:string){
@@ -73,6 +94,15 @@ getCurrentInternship(){
 return this.currentInternship;
 }
 
+updateInternship(internship:Internship, status: string){
+  const body = JSON.stringify({isPublished:status});
+  const id =internship._id;
+console.log(id);
+  return this.httpclient.put(this.Apiurl+ '/internships/' + internship._id, body,
+  {headers:new HttpHeaders({'Content-Type':'application/json', 'X-Requested-With': 'XMLHttpRequest' })})
+  .pipe( map((res:any)=>{  console.log(res);  return res;}));
+}
+
 public getIndustries(){
 	return this.industries = [
     {name:'Computers & Technology', subcategory:['Programming','Database Management',
@@ -81,7 +111,7 @@ public getIndustries(){
     'Information Systems Security']},
     
     {name:'Business & Management',  subcategory:['Accounting', 'Business administration',
-    'Economics', 'Entertainment Management', 'Finance', 'Forensic Accounting',
+    'Economics', 'Entertainment Management', 'Finance', 'demostration FYP',
     'Hotel & Restaurant Management', 'Human Resources', 'International Business', 
     'Internet Business', 'Logistics', 'Organisational Leadership', 
     'Project Management', 'Real Estate', 'Retail & Sales', 'Risk Management', 'Sports Management', 

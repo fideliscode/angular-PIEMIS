@@ -15,13 +15,23 @@ import { Router } from '@angular/router';
 export class CompanyRegistrationComponent implements OnInit {
 companyForm: FormGroup;
 user: User;
+submitted:boolean;
+message='';
+companyname:string;
+Brella = ['Bunju Enterprises','vivafriendsgroup', 'university of dar es salaam', 'another company', 'hellenlifetalks'];
 
 
   constructor(public userService: UserService, public internshipService: InternshipService, 
   public authService: AuthService, public router:Router ){
-      if(this.authService.getProCompany()){
-          this.router.navigate(['users/professional-dashboard'])
+    this.submitted = false;
+    this.companyname = localStorage.getItem('company');
+    console.log(this.companyname);
+
+      if(this.companyname =="undefined"){
+          this.router.navigate(['/users/register-company']);
       }
+      else{this.router.navigate(['/users/professional-dashboard']);}
+
     
    }
 
@@ -39,7 +49,12 @@ user: User;
   }
   
   onCompanySubmit() {
-    this.userService.regCompany(
+    this.submitted = true;
+// for (var i = this.Brella.length - 1; i >= 0; i--) {
+ console.log(this.companyForm.value.companyName);
+//   if(this.companyForm.value.companyName === this.Brella[i]){
+//     console.log(This.Brella[i]);
+ this.userService.regCompany(
       this.companyForm.value.companyName,
       this.companyForm.value.industryType,
       this.companyForm.value.noEmployees,
@@ -48,13 +63,27 @@ user: User;
       this.companyForm.value.region)
     .subscribe(
       (res) => {
-        if(res.companyName != 'undefined' || res.companyName != null ){
+        if( res.companyName != null ){
           this.companyForm.reset();
-          this.router.navigate(['users/professional-dashboard']);
+         this.router.navigate(['internships/new-internship']);
+        }else{
+          this.router.navigate(['users/register-company']);
+          alert("company not registered");
         }
-        this.router.navigate(['users/register-company']);
+        
       }
       );
+    // return;
 
-  }
+//   }
+//   else{
+
+// this.message ="the company is not registered under BRELLA";
+//   }
+//}
+
+
+}
+
+   
 }

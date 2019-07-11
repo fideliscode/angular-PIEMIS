@@ -1,0 +1,13 @@
+
+  <div class="card mt-2 " role="button"   >
+   
+        <div class="card-body mb-1">
+          <p class="card-title mb-1" style="color: green;">{{intern.fname |  titlecase}} {{intern.lname |  titlecase}}</p>
+          <p class=" mb-1"> Contact <span class="text-muted">{{intern.phone}}</span> </p>
+          <p class=" mb-1" *ngIf="showPosition"> Position 
+          	<span class="text-muted">{{intern.internshipName}}</span> </p>
+            <small class="card-text mb-1"><span style="color: black;">Email Address:</span> {{intern.email |  titlecase}}</small>
+        
+         </div>
+          
+  </div>

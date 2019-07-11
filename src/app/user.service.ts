@@ -15,7 +15,7 @@ export class UserService {
   message:string;
   companyRegistered:boolean = false;
   state ='false';
-  // Apiurl = 'https://node-rest-piemis.herokuapp.com';
+ 
   //Apiurl = 'http://localhost:3000';
   Apiurl = "https://node-rest-piemis.herokuapp.com";
 
@@ -148,7 +148,7 @@ getUser(){
       map((res: User)=>{
         this.user = res;
       
-        return {user:this.user}
+        return this.user;
       })
     );
    
@@ -207,6 +207,43 @@ getCompanyName(){
 
 getUserid(){
 
-  return localStorage.getItem('user_id');
+  return localStorage.getItem('userid');
   }
+
+updateUser(
+
+    fname: string,
+    lname: string,
+    email: string,
+    phone: string,
+    bio:string,
+    image: string,
+    skills: string,
+    location: string,
+    Institution: string,
+    //dob:Date
+    )
+    {const token = localStorage.getItem('token');
+    const id = localStorage.getItem('userid');
+    const body = JSON.stringify({
+
+        fname: fname,
+        lname:  lname,
+        email: email,
+        phone: phone,
+        bio:bio,
+        image: image,
+        skills: skills,
+        location: location,
+        Institution:Institution,
+      //  dob:dob
+      });
+    console.log(body);
+        return this.httpclient.put(this.Apiurl+ '/users/' + id , body,
+          {headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})
+        })
+
+}
+
+
 }

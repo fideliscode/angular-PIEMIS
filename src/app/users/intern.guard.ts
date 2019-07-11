@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree,Router,CanActivate} from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService} from 'src/app/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InternGuard implements CanActivate {
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
+export class InternGuard implements  CanActivate{
   
+ constructor(private authService: AuthService,private router: Router){
+
+ }
+canActivate( next: ActivatedRouteSnapshot,state: RouterStateSnapshot):
+ Observable<boolean>| Promise<boolean> | boolean | UrlTree
+ {
+      if(this.authService.Authenticated() && (this.authService.getRole()=='intern')){
+      		console.log('111');
+			return true;
+      }
+      else{
+      	console.log('789');
+      	return this.router.parseUrl("/users/login");
+      }
+  }
 }

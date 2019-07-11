@@ -25,9 +25,7 @@ user: User;
         public router: Router) {
           this.type= 'password';
           this.message ='';
-         
-          
-         
+                
           
     }
 
