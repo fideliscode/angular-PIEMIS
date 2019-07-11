@@ -71,7 +71,7 @@ onSubmit() {
     this.internSettingsForm.value.email,
     this.internSettingsForm.value.password,
     this.internSettingsForm.value.phone,
-     this.internSettingsForm.value.skills,
+     // this.internSettingsForm.value.skills,
     'intern').subscribe(
       (response)=>{
         if(response.message == "user exists"){
