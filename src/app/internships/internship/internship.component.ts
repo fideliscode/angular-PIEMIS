@@ -11,7 +11,7 @@ export class InternshipComponent implements OnInit {
 @Input() internship: Internship;
 view:boolean;
 
-constructor(private router: Router, private internshipService: InternshipService) {
+constructor(private router: Router, public internshipService: InternshipService) {
   	this.view=false;
   }
 

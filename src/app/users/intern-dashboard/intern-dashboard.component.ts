@@ -33,7 +33,7 @@ editimage='';
 
 
 
-  constructor(private userService:UserService,private authService:AuthService, private router: Router,private formBuilder: FormBuilder) {
+  constructor(public userService:UserService,public authService:AuthService, private router: Router,private formBuilder: FormBuilder) {
 
      this.userService.getUser().subscribe((res: User)=>{
        this.user = res;
@@ -71,6 +71,7 @@ onSubmit() {
     this.internSettingsForm.value.email,
     this.internSettingsForm.value.password,
     this.internSettingsForm.value.phone,
+     this.internSettingsForm.value.skills,
     'intern').subscribe(
       (response)=>{
         if(response.message == "user exists"){
