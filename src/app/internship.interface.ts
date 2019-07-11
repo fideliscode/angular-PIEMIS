@@ -27,7 +27,7 @@ export class Internship{
 					        noEmployees:string;
 					    	logo:string;
 					    	website:string;
-					    	country:string;
+					    	region:string;
 					    	industryType: {
 					    		name:string;
 					    		subcategory:string[];};
