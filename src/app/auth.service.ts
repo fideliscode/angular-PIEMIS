@@ -21,19 +21,21 @@ export class AuthService {
   token:string;
   message:string;
   fail=false;
-   Apiurl :string;
+  Apiurl = 'https://node-rest-piemis.herokuapp.com';
   //Apiurl = 'http://localhost:3000';
 
 constructor(private httpClient: HttpClient,private router: Router) { }
+
     getApiurl(){
-        //this.Apiurl = 'http://localhost:3000';
-       const Apiurl = "https://node-rest-piemis.herokuapp.com";
+      //  this.Apiurl = 'http://localhost:3000';
+       const Apiurl = 'https://node-rest-piemis.herokuapp.com';
        // console.log(this.Apiurl);
         return this.Apiurl;
       }
 
     login(email: string, password: string){
       const body = JSON.stringify({email, password});
+      this.Apiurl = this.getApiurl();
       console.log(body);
       return this.httpClient.post(this.Apiurl+ '/users/login', body ,{headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})})
       .pipe(

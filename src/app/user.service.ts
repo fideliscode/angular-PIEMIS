@@ -29,7 +29,7 @@ regIntern(fname: string, lname: string, email: string, password: string, phone: 
     const body = JSON.stringify({fname, lname, email, password, phone, role});
     console.log(body);
 
-    return this.httpclient.post(this.Apiurl+ '/users/', body,
+    return this.httpclient.post(this.authService.getApiurl() + '/users/', body,
       {headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})
     })
     .pipe(
@@ -68,7 +68,7 @@ regProfessional(
    localStorage.clear();
     
   const body = JSON.stringify({fname, lname, email, password, phone, role});
-  return this.httpclient.post(this.Apiurl+ '/users/', body,
+  return this.httpclient.post(this.authService.getApiurl() + '/users/', body,
   {headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})})
   .pipe(
    map((res: any)=>{
@@ -104,7 +104,7 @@ getState(){
 
 emailConfirm(token){
 const body = JSON.stringify({token:token});
-return this.httpclient.post(this.Apiurl+ '/confirmation', body,
+return this.httpclient.post(this.authService.getApiurl() + '/confirmation', body,
   {headers :new HttpHeaders({'Content-Type': 'application/json',  
     'X-Requested-With': 'XMLHttpRequest'})})
 .pipe(
@@ -117,7 +117,7 @@ map((res: any)=>{
 resendToken(email){
   console.log(email);
   const body = JSON.stringify({email:email});
-  return this.httpclient.post(this.Apiurl+ '/resend', body,
+  return this.httpclient.post(this.authService.getApiurl() + '/resend', body,
   {headers :new HttpHeaders({'Content-Type': 'application/json',  
   'X-Requested-With': 'XMLHttpRequest'})})
 }
@@ -144,7 +144,7 @@ getCurrentuser(){
 
 getUser(){
   const id = localStorage.getItem('userid');
-    return this.httpclient.get(this.Apiurl+'/users/' + id)
+    return this.httpclient.get(this.authService.getApiurl() +'/users/' + id)
     .pipe(
       map((res: User)=>{
         this.user = res;
@@ -170,7 +170,7 @@ regCompany(
   const id = this.getUserid();
   const body = JSON.stringify({company:{companyName,industryType,noEmployees, website, address, region}});
   console.log(body);
-  return this.httpclient.put(this.Apiurl+ '/users/' + id, body,
+  return this.httpclient.put(this.authService.getApiurl() + '/users/' + id, body,
   {headers:new HttpHeaders({'Content-Type':'application/json', 'X-Requested-With': 'XMLHttpRequest' })})
   .pipe(
     map((res: any)=>{
@@ -240,7 +240,7 @@ updateUser(
       //  dob:dob
       });
     console.log(body);
-        return this.httpclient.put(this.Apiurl+ '/users/' + id , body,
+        return this.httpclient.put(this.authService.getApiurl() + '/users/' + id , body,
           {headers :new HttpHeaders({'Content-Type': 'application/json',  'X-Requested-With': 'XMLHttpRequest'})
         })
 
