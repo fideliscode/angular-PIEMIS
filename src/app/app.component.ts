@@ -13,7 +13,7 @@ import { map,tap} from 'rxjs/operators';
 })
 export class AppComponent {
 	//Apiurl = 'http://localhost:3000';
-  Apiurl = "https://node-rest-piemis.herokuapp.com";
+  Apiurl:string;
 	
   position = 'center';
   internships : Internship[]=[];
@@ -22,6 +22,7 @@ export class AppComponent {
 	
   constructor(public internshipService: InternshipService, public router:Router,private httpclient: HttpClient,
     public authService: AuthService, public userService: UserService){
+    this.Apiurl = this.authService.getApiurl();
 		this.thesearch = false;
 		this.position='center';
     this.company = localStorage.getItem('company');

@@ -6,6 +6,8 @@ import { HttpResponse }  from '@angular/common/http';
 import { InternshipService} from 'src/app/internship.service';
 import { User} from 'src/app/user.interface';
 import { Router} from '@angular/router';
+import { AuthService} from 'src/app/auth.service';
+
 
 @Component({
   selector: 'app-new-internship',
@@ -18,28 +20,25 @@ export class NewInternshipComponent implements OnInit {
   internshipForm:FormGroup;
   attachfile: boolean;
   image:any;
-  Apiurl = "https://node-rest-piemis.herokuapp.com";
+  Apiurl:string;
   //Apiurl = 'http://localhost:3000';
   submitted=false;
   success= false;
   user:User;
 
 
-  constructor(public userService: UserService, private fb:  FormBuilder,private httpclient: HttpClient,private router:Router,
+  constructor(public userService: UserService, private fb:  FormBuilder,public authService:AuthService,
+    private httpclient: HttpClient,private router:Router,
     public internshipService: InternshipService, private el: ElementRef) {
+    this.Apiurl = this.authService.getApiurl();
       this.submitted=false;
       this.success= false;
       this.attachfile = false;
       this.createForm();
-      //const company = localStorage.getItem('company');
-         this.userService.getUser().subscribe((res: User)=>{
+      this.userService.getUser()
+      .subscribe((res: User)=>{
        this.user = res;
-       console.log(this.user.company.companyName);
-        if (!this.user.company.companyName) {
-      this.router.navigate(['/users/register-company']);
-      }
-
-     });
+       });
 
 
     }
@@ -47,6 +46,7 @@ export class NewInternshipComponent implements OnInit {
   ngOnInit() {
    
   }
+  
   createForm(){
   this.internshipForm = new FormGroup({
       internshipPosition: new FormControl(),

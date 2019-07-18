@@ -99,7 +99,7 @@
                        </td>
                        <td class="btn btn-danger btn-sm mt-1 shadow" (click)="onPublish(internship)">
                        {{internship.isPublished |  titlecase }}</td>
-                       <td> <img src="https://node-rest-piemis.herokuapp.com/{{internship.internshipfile }}"  style="width:250px;background-color:honeydew ;height:180px;border-radius: 10px;">
+                       <td> <img src="{{Apiurl + '/' + internship.internshipfile }}"  style="width:250px;background-color:honeydew ;height:180px;border-radius: 10px;">
                        </td>
                     
                     </tr>

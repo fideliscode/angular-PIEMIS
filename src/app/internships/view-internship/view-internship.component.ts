@@ -4,6 +4,7 @@ import { Internship} from 'src/app/internship.interface';
 import { Router} from '@angular/router';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { map,tap} from 'rxjs/operators';
+import { AuthService} from 'src/app/auth.service';
 
 @Component({
   selector: 'app-view-internship',
@@ -26,10 +27,15 @@ export class ViewInternshipComponent implements OnInit {
   showalert:boolean=false;
   alerttype:string;
   //Apiurl = 'http://localhost:3000';
-  Apiurl = "https://node-rest-piemis.herokuapp.com";
+  Apiurl:string;
+  imageurl:string;
 
-  constructor(private httpclient:HttpClient,public internshipService:InternshipService, public router: Router
+  constructor(private httpclient:HttpClient,public authService:AuthService,
+    public internshipService:InternshipService, public router: Router
    ) {
+this.Apiurl = this.authService.getApiurl();
+
+    if (!this.internship)this.router.navigate(['home']);return;
     this.alerttype="danger"
   this.overview =true; 
   this.review=false;
@@ -37,13 +43,13 @@ export class ViewInternshipComponent implements OnInit {
   this.apply=false;
       this.showalert=false;
   	this.internship = this.internshipService.getCurrentInternship();
-  	if (!this.internship) 
-  		this.router.navigate(['home']);
-  	return;
-  	
+      this.imageurl = this.Apiurl + '/' + this.internship.internshipfile;
+    console.log(this.imageurl);
+
   }
 
   ngOnInit() {
+  
   }
   
   onApply(){

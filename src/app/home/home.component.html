@@ -4,10 +4,30 @@
    <nav class="navbar navbar-expand-lg navbar-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       
-      <ul class="navbar-nav mr-0">
+      <ul class="navbar-nav">
+        <button class="btn" [disabled]="true" >
+          <div class="d-flex justify-content-center">
+            <div class="mr-1">
+              <span class="dots"></span>
+              <span class="dots"></span>
+              <span class="dots"></span>
+            </div>
+            <div class="mr-1">
+              <span class="dots"></span>
+              <span class="dots"></span>
+              <span class="dots"></span>
+            </div>
+            <div class="mr-1" >
+              <span class="dots"></span>
+              <span class="dots"></span>
+              <span class="dots"></span>
+            </div>
+             <div class="ml-1 text-muted"><h5>Categories</h5></div> 
+           </div>        
+        </button>
         <li class="nav-item dropdown " role="presentation" *ngFor="let category of internshipService.getIndustries(); let i=index" >
           
-          <a class=" btn btn-outline-dark nav-link ml-3"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class=" btn btn-outline-dark btn-sm nav-link ml-2"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        {{category.name}}
           </a>
           

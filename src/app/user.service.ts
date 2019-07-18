@@ -4,6 +4,7 @@ import { Observable} from 'rxjs';
 import { map,tap} from 'rxjs/operators';
 import { User} from './user.interface';
 import { Router} from '@angular/router';
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -17,10 +18,10 @@ export class UserService {
   state ='false';
  
   //Apiurl = 'http://localhost:3000';
-  Apiurl = "https://node-rest-piemis.herokuapp.com";
+  Apiurl:string;
 
-  constructor(private httpclient: HttpClient, private router: Router) {
-    
+  constructor(private httpclient: HttpClient, private router: Router, public authService:AuthService) {
+    this.Apiurl = this.authService.getApiurl();
   }
 
 regIntern(fname: string, lname: string, email: string, password: string, phone: number, role: string)

@@ -21,10 +21,16 @@ export class AuthService {
   token:string;
   message:string;
   fail=false;
-  Apiurl = "https://node-rest-piemis.herokuapp.com";
+   Apiurl :string;
   //Apiurl = 'http://localhost:3000';
 
 constructor(private httpClient: HttpClient,private router: Router) { }
+    getApiurl(){
+        //this.Apiurl = 'http://localhost:3000';
+       const Apiurl = "https://node-rest-piemis.herokuapp.com";
+       // console.log(this.Apiurl);
+        return this.Apiurl;
+      }
 
     login(email: string, password: string){
       const body = JSON.stringify({email, password});

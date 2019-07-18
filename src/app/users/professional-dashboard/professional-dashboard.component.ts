@@ -21,7 +21,7 @@ proInternships:Internship[]=[];
 applications: Application[]=[];
 internships:Internship[]=[];
 notifications:number;
-
+Apiurl:string;
 company ="My";
 interns:User[]=[];
 ShowNotification:boolean;
@@ -60,7 +60,7 @@ this.interns= [];
 }
 
   ngOnInit() {
-  
+  this.Apiurl = this.authService.getApiurl();
   }
   onInternships(){
    

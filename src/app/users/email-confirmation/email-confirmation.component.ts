@@ -53,9 +53,4 @@ export class EmailConfirmationComponent implements OnInit {
     ); 
   	 
     }
-  
-  	
-  
-
-
-}
+  }

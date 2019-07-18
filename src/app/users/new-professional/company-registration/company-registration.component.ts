@@ -68,6 +68,7 @@ Brella = ['Bunju Enterprises','vivafriendsgroup', 'university of dar es salaam',
          this.router.navigate(['internships/new-internship']);
         }else{
           this.router.navigate(['users/register-company']);
+           this.companyForm.reset();
           alert("company not registered");
         }
         

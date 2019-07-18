@@ -7,6 +7,7 @@ import { Employee} from './model/employee';
 import { Region} from './model/region';
 import { Industry} from './model/industry';
 import { Observable} from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +27,12 @@ application:{status: string;
             intern:User;
             professional:string;
           };
- Apiurl = 'https://node-rest-piemis.herokuapp.com';
+ Apiurl :string;
 //Apiurl = 'http://localhost:3000';
 
-constructor(private httpclient: HttpClient) {}
+constructor(private httpclient: HttpClient, public authService: AuthService) {
+  this.Apiurl = this.authService.getApiurl();
+}
 
 
 getInternships():Observable<Internship[]>{

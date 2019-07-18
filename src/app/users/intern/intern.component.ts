@@ -16,6 +16,7 @@ view:boolean;
 
 constructor(private router: Router, private internshipService: InternshipService) {
   	this.view=false;
+  
   }
 
 ngOnInit() {

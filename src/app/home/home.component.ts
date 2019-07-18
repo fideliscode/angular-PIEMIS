@@ -25,12 +25,15 @@ export class HomeComponent implements OnInit {
   search:string;
   textsearch:boolean;
   thevalue:string;
-  Apiurl = "https://node-rest-piemis.herokuapp.com";
+  Apiurl:string;
+  showcategories:boolean;
   //Apiurl = 'http://localhost:3000';
 
 
   constructor(public internshipService: InternshipService, public router:Router,private httpclient: HttpClient,
     public authService: AuthService, public userService: UserService) {
+    this.showcategories=false;
+    this.Apiurl = this.authService.getApiurl();
     this.thesearch = false; 
     this.textsearch = false;
 if (this.internships.length > 0) {
@@ -43,6 +46,9 @@ if (this.internships.length > 0) {
   	this.searchForm = new FormGroup({
       searchtext: new FormControl()
   });
+  }
+  onCategory(){
+    this.showcategories=true;
   }
 
    onSearch(subcat){
